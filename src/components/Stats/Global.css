@@ -1,0 +1,102 @@
+.sonar-emitter {
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  padding-top: 30px;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.sonar-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sonar-wave {
+  animation: sonarWave 2s linear infinite;
+}
+
+@keyframes sonarWave {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.global-stats > div {
+  display: flex;
+  justify-content: center;
+}
+
+.cases-bg {
+  background-color: #0047ab;
+}
+
+.recovered-bg {
+  background-color: #228b22;
+}
+
+.infected-bg {
+  background-color: #696969;
+}
+
+.deaths-bg {
+  background-color: #dc3545;
+}
+
+.adjust-circles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.today-info {
+  margin-bottom: -25px;
+  font-size: 12px;
+}
+
+.spinner-circle {
+  margin-top: 15px;
+}
+
+.global-card-align {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.card-header-adjust {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .sonar-emitter {
+    width: 90px;
+    height: 90px;
+    margin-top: 10px;
+    padding-top: 20px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+
+  .global-stats > div {
+    margin-top: 10px;
+  }
+
+  .spinner-circle {
+    margin-top: 10px;
+  }
+}
