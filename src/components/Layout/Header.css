@@ -1,0 +1,71 @@
+.header-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header-container > div {
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  background-color: #050505;
+  color: white;
+}
+
+.online-button {
+  align-self: center;
+}
+
+.covid-logo {
+  text-align: center;
+}
+
+.covid-logo-title {
+  font-size: 32px;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+@media (max-width: 360px) {
+  .covid-logo {
+    align-self: center;
+  }
+  .covid-logo-title {
+    font-size: 20px;
+  }
+}
+
+.covid-logo-sub-title {
+  font-weight: bold;
+  background-color: #688a68;
+  border-radius: 10px;
+}
+
+.config {
+  font-size: 14px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.config-time {
+  margin-top: 10px;
+}
+
+.config-time > div {
+  display: flex;
+}
+
+.config-overlay-info {
+  margin-left: 20px;
+}
+
+.config-select-time {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.config-select {
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}

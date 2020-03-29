@@ -1,23 +1,33 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import SpinnerLoad from '../Load/SpinnerLoad';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import NumberFormat from 'react-number-format';
+// import { InfoCircleFill } from 'react-bootstrap-icons';
+// import Button from 'react-bootstrap/Button';
+// import Tooltip from 'react-bootstrap/Tooltip';
+// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import Badge from 'react-bootstrap/Badge';
 
-const Global = ({ globalStats, infected, handleCountriesInfecteds, loadingGlobalStats, loadingInfectedCountries }) => {
-  const handleLoading = (name, value) => (
+const Global = ({ globalStats, loadingGlobalStats }) => {
+  const handleLoading = (name, value, percent) => (
     <SpinnerLoad
       element={
-        <Fragment>
-          <div>{name}</div>
-          <div>{value}</div>
-        </Fragment>
+        <div>
+          <div>
+            <span>{name}</span>
+          </div>
+          <div className='adjust-circle-value'>
+            <span>{value}</span>
+          </div>
+          {percent && (
+            <div className='global-circle-percent'>
+              <NumberFormat decimalScale={2} displayType={'text'} suffix={'%'} value={percent} />
+            </div>
+          )}
+        </div>
       }
       circle
       show={loadingGlobalStats}
@@ -30,56 +40,35 @@ const Global = ({ globalStats, infected, handleCountriesInfecteds, loadingGlobal
   return (
     <Card className='global-card-align'>
       <Card.Header>
-        <div className='card-header-adjust'>
-          <h5>
-            Global <Badge variant='dark'>Statistics</Badge>
-          </h5>
-          <OverlayTrigger
-            placement={'bottom'}
-            overlay={
-              <Tooltip>
-                Click to see all countries <strong>infected</strong>!
-              </Tooltip>
-            }
-          >
-            <Button size='sm' variant='danger' disabled={loadingInfectedCountries} onClick={handleCountriesInfecteds}>
-              <SpinnerLoad
-                element={'Countries'}
-                show={loadingInfectedCountries}
-                size={'sm'}
-                animation={'border'}
-                variant={'light'}
-              />
-            </Button>
-          </OverlayTrigger>
-        </div>
+        <h5>Global Statistics</h5>
       </Card.Header>
       <Card.Body>
         <Row className='global-stats'>
           <Col>
-            <div className='sonar-emitter cases-bg'>
-              {handleLoading('Cases', globalStats.total_cases)}
-              <div className='sonar-wave cases-bg'></div>
+            <div className='sonar-emitter confirmed-bg'>
+              {handleLoading('Confirmed', globalStats.total_cases)}
+              <div className='sonar-wave confirmed-bg'></div>
             </div>
           </Col>
           <Col>
             <div className='sonar-emitter infected-bg'>
               {handleLoading(
                 'Infected',
-                <NumberFormat displayType={'text'} thousandSeparator={true} value={infected} />
+                <NumberFormat displayType={'text'} thousandSeparator={true} value={globalStats.infected} />,
+                globalStats.percentInfected
               )}
               <div className='sonar-wave infected-bg'></div>
             </div>
           </Col>
           <Col>
             <div className='sonar-emitter deaths-bg'>
-              {handleLoading('Deaths', globalStats.total_deaths)}
+              {handleLoading('Deaths', globalStats.total_deaths, globalStats.percentDeaths)}
               <div className='sonar-wave deaths-bg'></div>
             </div>
           </Col>
           <Col>
             <div className='sonar-emitter recovered-bg'>
-              {handleLoading('Recovered', globalStats.total_recovered)}
+              {handleLoading('Recovered', globalStats.total_recovered, globalStats.percentRecovered)}
               <div className='sonar-wave recovered-bg'></div>
             </div>
           </Col>

@@ -1,3 +1,25 @@
+.nav-tabs {
+  justify-content: space-around;
+  border: 1px solid #dee2e6;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-tabs .nav-link.active {
+  color: black;
+}
+
+.nav-tabs .nav-link {
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.nav-tabs a {
+  color: lightgrey;
+}
+
 .sonar-emitter {
   text-align: center;
   line-height: 30px;
@@ -11,6 +33,9 @@
   z-index: 1;
 }
 
+.adjust-circle-value {
+  margin-top: -5px;
+}
 .sonar-wave {
   position: absolute;
   top: 0;
@@ -24,7 +49,7 @@
 }
 
 .sonar-wave {
-  animation: sonarWave 2s linear infinite;
+  animation: sonarWave 1.5s linear infinite;
 }
 
 @keyframes sonarWave {
@@ -42,8 +67,8 @@
   justify-content: center;
 }
 
-.cases-bg {
-  background-color: #0047ab;
+.confirmed-bg {
+  background-color: #3b79b7;
 }
 
 .recovered-bg {
@@ -73,13 +98,14 @@
 }
 
 .global-card-align {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
-.card-header-adjust {
-  display: flex;
-  justify-content: space-between;
+.global-circle-percent {
+  font-weight: normal;
+  font-size: 12px;
+  margin-top: -10px;
 }
 
 @media (max-width: 768px) {
@@ -98,5 +124,24 @@
 
   .spinner-circle {
     margin-top: 10px;
+  }
+  .global-circle-percent {
+    font-size: 10px;
+    margin-top: -8px;
+  }
+
+  .-previous,
+  .-next {
+    height: 30px;
+  }
+
+  .-pageJump input {
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .-pageSizeOptions {
+    display: none;
   }
 }

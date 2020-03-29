@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import Badge from 'react-bootstrap/Badge';
 
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './Global.css';
@@ -10,10 +9,14 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
   const handleLoadingGlobal = (name, value) => (
     <SpinnerLoad
       element={
-        <Fragment>
-          <div>{name}</div>
-          <div>{value}</div>
-        </Fragment>
+        <div>
+          <div>
+            <span>{name}</span>
+          </div>
+          <div>
+            <span>{value}</span>
+          </div>
+        </div>
       }
       circle
       show={loadingGlobalStats}
@@ -26,10 +29,14 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
   const handleLoadingAllCases = (name, value) => (
     <SpinnerLoad
       element={
-        <Fragment>
-          <div>{name}</div>
-          <div>{value}</div>
-        </Fragment>
+        <div>
+          <div>
+            <span>{name}</span>
+          </div>
+          <div>
+            <span>{value}</span>
+          </div>
+        </div>
       }
       circle
       show={loadingAllCases}
@@ -42,24 +49,22 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
     <CardGroup>
       <Card>
         <Card.Header>
-          <h5>
-            Today <Badge variant='warning'>Worldwide</Badge>
-          </h5>
+          <h5>Worldwide</h5>
           <div className='today-info'>
-            <p>Occurrences in the whole world.</p>
+            <p>Occurrences in the past 24 hours.</p>
           </div>
         </Card.Header>
         <Card.Body>
           <div className='adjust-circles'>
             <div>
-              <div className='sonar-emitter cases-bg'>
-                {handleLoadingGlobal('Cases', newCases)}
-                <div className='sonar-wave cases-bg'></div>
+              <div className='sonar-emitter confirmed-bg'>
+                {handleLoadingGlobal('Confirmed', '+' + newCases)}
+                <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingGlobal('Deaths', newDeaths)}
+                {handleLoadingGlobal('Deaths', '+' + newDeaths)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>
@@ -69,13 +74,12 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
       <Card>
         <Card.Header>
           <h5>
-            Today{' '}
             <SpinnerLoad
-              element={<Badge variant='danger'>{dayOccurrences.country_name}</Badge>}
+              element={<span>{dayOccurrences.country_name}</span>}
               show={loadingAllCases}
               size={'sm'}
               animation={'border'}
-              variant={'danger'}
+              variant={'dark'}
             />
           </h5>
           <div className='today-info'>
@@ -85,14 +89,14 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
         <Card.Body>
           <div className='adjust-circles'>
             <div>
-              <div className='sonar-emitter cases-bg'>
-                {handleLoadingAllCases('Cases', dayOccurrences.new_cases)}
-                <div className='sonar-wave cases-bg'></div>
+              <div className='sonar-emitter confirmed-bg'>
+                {handleLoadingAllCases('Confirmed', '+' + dayOccurrences.new_cases)}
+                <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingAllCases('Deaths', dayOccurrences.new_deaths)}
+                {handleLoadingAllCases('Deaths', '+' + dayOccurrences.new_deaths)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>
@@ -103,14 +107,3 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
   );
 };
 export default Today;
-
-// country_name: 'USA';
-// cases: '26,111';
-// deaths: '324';
-// region: '';
-// total_recovered: '176';
-// new_deaths: '68';
-// new_cases: '6,728';
-// serious_critical: '64';
-// active_cases: '25,611';
-// total_cases_per_1m_population: '79';

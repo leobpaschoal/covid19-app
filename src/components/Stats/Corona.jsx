@@ -1,30 +1,37 @@
-import React, { Component, Fragment } from 'react';
-import { monitor } from '../../client';
+import React, { Component } from 'react';
+import { monitor, news } from '../../client';
 import './Global.css';
 import Header from '../Layout/Header';
-
+import { replaceStringToNumber, calcPercent } from '../Utils/Numbers';
 import Global from './Global';
 import Today from './Today';
-import Table from './Table';
+import News from '../News/News';
+import About from '../About/About';
+import TableStats from './TableStats';
 import Container from 'react-bootstrap/Container';
-import CountriesInfecteds from '../Modals/CountriesInfecteds';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import { GraphUp, Newspaper, QuestionCircleFill } from 'react-bootstrap-icons';
 
 class Corona extends Component {
   state = {
     globalStats: {},
     countriesStats: [],
     dayOccurrences: {},
-    infectedCountries: [],
-    infected: 0,
-    showCountriesInfecteds: false,
+    news: [],
     loadingGlobalStats: true,
     loadingAllCases: true,
-    loadingInfectedCountries: true,
-    manageTimeout: null
+    loadingNews: true,
+    manageTimeout: null,
+    refreshTime: 60000 * 10,
+    refreshIsChecked: true,
+    keyTab: 'global',
+    searchValue: ''
   };
 
   componentDidMount = () => {
-    this.getSyncAll(false, 0);
+    this.getSyncAll(true, this.state.refreshTime);
+    this.getNews();
   };
 
   getSyncAll = async (run, time) => {
@@ -35,38 +42,31 @@ class Corona extends Component {
     this.handleManageTimeout(run, time);
   };
 
-  handleManageTimeout = (run, time) => {
-    if (run) {
-      this.setState({
-        manageTimeout: setTimeout(() => {
-          this.getSyncAll(true, time);
-        }, time)
-      });
-    } else {
-      if (this.state.manageTimeout !== null) {
-        clearTimeout(this.state.manageTimeout);
-      }
-    }
-  };
-
   getGlobalStats = async () => {
     await monitor()
       .get('/worldstat.php')
       .then(response => {
         if (response.statusText === 'OK') {
-          this.setState({ globalStats: response.data });
-          const totalCases = this.replaceStringToNumber(response.data.total_cases);
-          const totalRecovered = this.replaceStringToNumber(response.data.total_recovered);
-          this.setState({ infected: totalCases - totalRecovered });
-          console.log();
+          const res = response.data;
+
+          const totalCases = replaceStringToNumber(res.total_cases);
+          const totalRecovered = replaceStringToNumber(res.total_recovered);
+          const totalDeaths = replaceStringToNumber(res.total_deaths);
+
+          res.infected = totalCases - (totalRecovered + totalDeaths);
+          res.percentInfected = calcPercent(res.infected, res.total_cases);
+          res.percentDeaths = calcPercent(res.total_deaths, res.total_cases);
+          res.percentRecovered = calcPercent(res.total_recovered, res.total_cases);
+
+          this.setState({ globalStats: res });
           console.log('======== worldstat ==========');
           console.log(this.state.globalStats);
         } else {
           console.log('error worldstat');
         }
       })
-      .catch(() => {
-        console.log('catch! worldstat');
+      .catch(e => {
+        console.log(e + ' --- catch! worldstat');
       });
   };
 
@@ -78,15 +78,36 @@ class Corona extends Component {
         console.log(response);
         if (response.statusText === 'OK') {
           const dataCountriesStats = response.data.countries_stat;
-          this.setState({ countriesStats: dataCountriesStats });
+
+          this.setState({
+            countriesStats: dataCountriesStats.map(cbc => ({
+              ...cbc,
+              country_name:
+                cbc.country_name === 'Iran'
+                  ? 'Islamic Republic of Iran'
+                  : cbc.country_name === 'Togo'
+                  ? 'Togolese Republic'
+                  : cbc.country_name,
+              tableCases: replaceStringToNumber(cbc.cases),
+              tableNewCases: replaceStringToNumber(cbc.new_cases),
+              tableDeaths: replaceStringToNumber(cbc.deaths),
+              tableNewDeaths: replaceStringToNumber(cbc.new_deaths),
+              tableInfecteds: replaceStringToNumber(cbc.active_cases),
+              tableRecovered: replaceStringToNumber(cbc.total_recovered),
+              tableCritical: replaceStringToNumber(cbc.serious_critical),
+              tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
+              tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
+              tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases)
+            }))
+          });
 
           const maxValue = Math.max.apply(
             Math,
-            dataCountriesStats.map(cs => this.replaceStringToNumber(cs.new_deaths))
+            dataCountriesStats.map(cs => replaceStringToNumber(cs.new_deaths))
           );
 
           this.setState({
-            dayOccurrences: dataCountriesStats.find(dcs => this.replaceStringToNumber(dcs.new_deaths) === maxValue)
+            dayOccurrences: dataCountriesStats.find(dcs => replaceStringToNumber(dcs.new_deaths) === maxValue)
           });
           console.log('======== DAY OCCURENCES ==========');
           console.log(this.state.dayOccurrences);
@@ -94,78 +115,130 @@ class Corona extends Component {
           console.log('error cases_by_country');
         }
       })
-      .catch(() => {
-        console.log('catch! cases_by_country');
+      .catch(e => {
+        console.log(e + 'catch! cases_by_country');
       });
   };
 
-  getAllInfectedCountries = async () => {
-    this.setState({ loadingInfectedCountries: true });
-
-    await monitor()
-      .get('/affected.php')
+  getNews = async () => {
+    this.setState({ loadingNews: true });
+    await news()
+      .get()
       .then(response => {
-        console.log('======== INFECTED COUNTRIES ==========');
+        console.log('======== NEWS ==========');
+        const res = response.data;
         console.log(response);
-        if (response.statusText === 'OK') {
-          this.setState({ infectedCountries: response.data.affected_countries });
+        if (res.status === 'ok') {
+          this.setState({ news: res.articles });
         } else {
-          console.log('error affected');
+          console.log('error news');
         }
-        this.setState({ loadingInfectedCountries: false });
+        this.setState({ loadingNews: false });
       })
-      .catch(() => {
-        console.log('catch! affected');
+      .catch(e => {
+        console.log(e + 'catch news');
       });
   };
 
-  handleCountriesInfecteds = () => {
-    this.state.showCountriesInfecteds
-      ? this.setState({ showCountriesInfecteds: false })
-      : this.setState({ showCountriesInfecteds: true });
+  handleManageTimeout = (run, time) => {
+    clearTimeout(this.state.manageTimeout);
+
+    if (run) {
+      this.setState({
+        manageTimeout: setTimeout(() => {
+          this.getSyncAll(true, time);
+        }, time)
+      });
+    }
   };
 
-  replaceStringToNumber = string => parseInt(string.replace(',', ''));
+  handleRefreshChecked = () => {
+    this.setState({ refreshIsChecked: !this.state.refreshIsChecked });
+
+    if (!this.state.refreshIsChecked) {
+      this.handleManageTimeout(true, this.state.refreshTime);
+    } else {
+      this.handleManageTimeout(false);
+    }
+  };
+
+  handleChangeRefreshTime = event => {
+    this.setState({ refreshTime: event.target.value });
+    if (this.state.refreshIsChecked) {
+      this.handleManageTimeout(true, event.target.value);
+    }
+  };
+
+  setKeyTab = key => {
+    this.setState({ keyTab: key });
+  };
 
   render() {
     const {
       globalStats,
       countriesStats,
       dayOccurrences,
-      infected,
-      showCountriesInfecteds,
-      infectedCountries,
       loadingGlobalStats,
       loadingAllCases,
-      loadingInfectedCountries
+      refreshIsChecked,
+      refreshTime,
+      keyTab,
+      news
     } = this.state;
 
     return (
-      <Fragment>
-        <Header lastUpdated={globalStats.statistic_taken_at} handleManageTimeout={this.handleManageTimeout} />
+      <div>
+        <Header
+          lastUpdated={globalStats.statistic_taken_at}
+          handleChangeRefreshTime={this.handleChangeRefreshTime}
+          handleRefreshChecked={this.handleRefreshChecked}
+          refreshIsChecked={refreshIsChecked}
+          refreshTime={refreshTime}
+          loadingGlobalStats={loadingGlobalStats}
+        />
         <Container>
-          <Global
-            infected={infected}
-            globalStats={globalStats}
-            handleCountriesInfecteds={this.handleCountriesInfecteds}
-            loadingGlobalStats={loadingGlobalStats}
-            loadingInfectedCountries={loadingInfectedCountries}
-          />
-          <Today
-            loadingGlobalStats={loadingGlobalStats}
-            loadingAllCases={loadingAllCases}
-            dayOccurrences={dayOccurrences}
-            newCases={globalStats.new_cases}
-            newDeaths={globalStats.new_deaths}
-          />
-          <Table dataTable={countriesStats} />
-          <CountriesInfecteds
-            infectedCountries={infectedCountries}
-            handleClose={this.handleCountriesInfecteds}
-            show={showCountriesInfecteds}
-          />
+          <Tabs activeKey={keyTab} onSelect={k => this.setKeyTab(k)}>
+            <Tab
+              eventKey='global'
+              title={
+                <span>
+                  Statistics <GraphUp />
+                </span>
+              }
+            >
+              <Global globalStats={globalStats} loadingGlobalStats={loadingGlobalStats} />
+              <Today
+                loadingGlobalStats={loadingGlobalStats}
+                loadingAllCases={loadingAllCases}
+                dayOccurrences={dayOccurrences}
+                newCases={globalStats.new_cases}
+                newDeaths={globalStats.new_deaths}
+              />
+              <TableStats data={countriesStats} loadingAllCases={loadingAllCases} />
+            </Tab>
+            <Tab
+              eventKey='news'
+              title={
+                <span>
+                  News <Newspaper />
+                </span>
+              }
+            >
+              <News news={news} />
+            </Tab>
+            <Tab
+              eventKey='about'
+              title={
+                <span>
+                  About <QuestionCircleFill />
+                </span>
+              }
+            >
+              <About />
+            </Tab>
+          </Tabs>
         </Container>
-      </Fragment>
+      </div>
     );
   }
 }

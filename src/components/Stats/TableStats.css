@@ -1,0 +1,102 @@
+.table {
+  height: 500px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+  text-align: center;
+}
+
+.table-card-adjust {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.table-card-body-adjust {
+  padding: 3px;
+}
+
+.table-card-body-adjust > div {
+  text-align: center;
+}
+
+.table .rt-th {
+  font-weight: bold;
+  border-right: 1px solid lightgray !important;
+}
+
+.country-table-column {
+  color: white;
+  background-color: #688a68 !important;
+  border-right: 1px solid white !important;
+}
+
+.country-table-header {
+  color: white;
+  background-color: #283628 !important;
+  border-bottom: 1px solid white;
+}
+
+.confirmed-table-column {
+  color: white;
+  background-color: #3b79b7 !important;
+  border-right: 1px solid white !important;
+}
+
+.confirmed-table-header {
+  color: white;
+  background-color: #28527c !important;
+  border-bottom: 1px solid white;
+}
+
+.infected-table-column {
+  color: white;
+  background-color: #696969 !important;
+  border-right: 1px solid white !important;
+}
+
+.infected-table-header {
+  color: white;
+  background-color: #3f3f3f !important;
+  border-bottom: 1px solid white;
+}
+
+.deaths-table-column {
+  color: white;
+  background-color: #dc3545 !important;
+  border-right: 1px solid white !important;
+}
+
+.deaths-table-header {
+  color: white;
+  background-color: #91232e !important;
+  border-bottom: 1px solid white;
+}
+
+.recovered-table-column {
+  color: white;
+  background-color: #228b22 !important;
+  border-right: 1px solid white !important;
+}
+
+.recovered-table-header {
+  color: white;
+  background-color: #134d13 !important;
+  border-bottom: 1px solid white;
+}
+
+.critical-table-column {
+  color: white;
+  background-color: #bd8c24 !important;
+  border-right: 1px solid white !important;
+}
+
+.critical-table-header {
+  color: white;
+  background-color: #805f1a !important;
+  border-bottom: 1px solid white;
+}
+
+.search-input-country {
+  padding: 3px;
+  width: 100%;
+}
