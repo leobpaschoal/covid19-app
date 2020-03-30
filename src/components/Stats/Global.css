@@ -1,5 +1,6 @@
 .nav-tabs {
   justify-content: space-around;
+  font-size: 18px;
   border: 1px solid #dee2e6;
   border-top: 0;
   border-radius: 0 0 4px 4px;
@@ -143,5 +144,10 @@
 
   .-pageSizeOptions {
     display: none;
+  }
+
+  .nav-tabs {
+    font-size: 12px;
+    justify-content: center;
   }
 }

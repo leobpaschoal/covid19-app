@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { monitor, news } from '../../client';
-import './Global.css';
-import Header from '../Layout/Header';
+import { GraphUp, Newspaper, QuestionCircleFill } from 'react-bootstrap-icons';
 import { replaceStringToNumber, calcPercent } from '../Utils/Numbers';
+import { translate } from 'react-translate';
+import { countriesTranslated } from '../Utils/Utils';
+
+import Header from '../Layout/Header';
 import Global from './Global';
 import Today from './Today';
+import TableStats from './TableStats';
 import News from '../News/News';
 import About from '../About/About';
-import TableStats from './TableStats';
+
 import Container from 'react-bootstrap/Container';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import { GraphUp, Newspaper, QuestionCircleFill } from 'react-bootstrap-icons';
+import './Global.css';
 
 class Corona extends Component {
   state = {
@@ -26,7 +30,7 @@ class Corona extends Component {
     refreshTime: 60000 * 10,
     refreshIsChecked: true,
     keyTab: 'global',
-    searchValue: ''
+    inputSearchCountry: ''
   };
 
   componentDidMount = () => {
@@ -74,20 +78,29 @@ class Corona extends Component {
     await monitor()
       .get('/cases_by_country.php')
       .then(response => {
-        console.log('======== cases_by_country ==========');
-        console.log(response);
         if (response.statusText === 'OK') {
-          const dataCountriesStats = response.data.countries_stat;
+          console.log('======== cases_by_country ==========');
+          console.log(response);
 
-          this.setState({
-            countriesStats: dataCountriesStats.map(cbc => ({
+          const dataCountriesStats = response.data.countries_stat.sort(
+            (a, b) => replaceStringToNumber(b.cases) - replaceStringToNumber(a.cases)
+          );
+
+          const dataCountriesStatsPrepared = dataCountriesStats.map(cbc => {
+            const objCountryFind = countriesTranslated.find(ct => ct.originalName === cbc.country_name);
+            let chosenCountry = cbc.country_name; // Default api
+
+            if (this.props.tCountry === 'es') {
+              chosenCountry = objCountryFind.esName;
+            }
+
+            if (this.props.tCountry === 'br') {
+              chosenCountry = objCountryFind.brName;
+            }
+
+            return {
               ...cbc,
-              country_name:
-                cbc.country_name === 'Iran'
-                  ? 'Islamic Republic of Iran'
-                  : cbc.country_name === 'Togo'
-                  ? 'Togolese Republic'
-                  : cbc.country_name,
+              country_name: chosenCountry,
               tableCases: replaceStringToNumber(cbc.cases),
               tableNewCases: replaceStringToNumber(cbc.new_cases),
               tableDeaths: replaceStringToNumber(cbc.deaths),
@@ -98,16 +111,21 @@ class Corona extends Component {
               tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
               tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases)
-            }))
+            };
+          });
+
+          this.setState({
+            countriesStats: dataCountriesStatsPrepared,
+            filteredCountries: dataCountriesStatsPrepared
           });
 
           const maxValue = Math.max.apply(
             Math,
-            dataCountriesStats.map(cs => replaceStringToNumber(cs.new_deaths))
+            dataCountriesStatsPrepared.map(cs => replaceStringToNumber(cs.new_deaths))
           );
 
           this.setState({
-            dayOccurrences: dataCountriesStats.find(dcs => replaceStringToNumber(dcs.new_deaths) === maxValue)
+            dayOccurrences: dataCountriesStatsPrepared.find(dcs => replaceStringToNumber(dcs.new_deaths) === maxValue)
           });
           console.log('======== DAY OCCURENCES ==========');
           console.log(this.state.dayOccurrences);
@@ -122,8 +140,21 @@ class Corona extends Component {
 
   getNews = async () => {
     this.setState({ loadingNews: true });
+
+    let country = 'us';
+    let type = 'coronavirus';
+
+    switch (this.props.tCountry) {
+      case 'br':
+        country = 'br';
+        type = 'coronavírus';
+        break;
+      default:
+        break;
+    }
+
     await news()
-      .get()
+      .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
       .then(response => {
         console.log('======== NEWS ==========');
         const res = response.data;
@@ -169,6 +200,15 @@ class Corona extends Component {
     }
   };
 
+  filterByCountry = value => {
+    this.setState({
+      inputSearchCountry: value,
+      filteredCountries: this.state.countriesStats.filter(
+        country => country.country_name.toLowerCase().indexOf(value.toLowerCase()) !== -1
+      )
+    });
+  };
+
   setKeyTab = key => {
     this.setState({ keyTab: key });
   };
@@ -176,14 +216,15 @@ class Corona extends Component {
   render() {
     const {
       globalStats,
-      countriesStats,
+      filteredCountries,
       dayOccurrences,
       loadingGlobalStats,
       loadingAllCases,
       refreshIsChecked,
       refreshTime,
       keyTab,
-      news
+      news,
+      inputSearchCountry
     } = this.state;
 
     return (
@@ -202,7 +243,7 @@ class Corona extends Component {
               eventKey='global'
               title={
                 <span>
-                  Statistics <GraphUp />
+                  {this.props.t('statisticsTab')} <GraphUp />
                 </span>
               }
             >
@@ -214,13 +255,18 @@ class Corona extends Component {
                 newCases={globalStats.new_cases}
                 newDeaths={globalStats.new_deaths}
               />
-              <TableStats data={countriesStats} loadingAllCases={loadingAllCases} />
+              <TableStats
+                data={filteredCountries}
+                loadingAllCases={loadingAllCases}
+                inputSearchCountry={inputSearchCountry}
+                filterByCountry={this.filterByCountry}
+              />
             </Tab>
             <Tab
               eventKey='news'
               title={
                 <span>
-                  News <Newspaper />
+                  {this.props.t('newsTab')} <Newspaper />
                 </span>
               }
             >
@@ -230,7 +276,7 @@ class Corona extends Component {
               eventKey='about'
               title={
                 <span>
-                  About <QuestionCircleFill />
+                  {this.props.t('aboutTab')} <QuestionCircleFill />
                 </span>
               }
             >
@@ -243,4 +289,4 @@ class Corona extends Component {
   }
 }
 
-export default Corona;
+export default translate('Corona')(Corona);

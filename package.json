@@ -16,10 +16,11 @@
     "react-dom": "^16.13.1",
     "react-loading-overlay": "^1.0.1",
     "react-number-format": "^4.4.1",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-table": "6.11.4",
     "react-table-hoc-fixed-columns": "2.3.0",
+    "react-translate": "^7.0.1",
     "styled-components": "^5.0.1"
   },
   "scripts": {

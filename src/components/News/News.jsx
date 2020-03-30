@@ -19,15 +19,13 @@ const News = ({ news }) => (
         <Card.Body>
           <div className='content-news-card-body'>
             <div>
-              {/* <img width={200} src={n.urlToImage ? n.urlToImage : ''} /> */}
               <img
                 alt={''}
                 width={200}
                 src={n.urlToImage ? n.urlToImage : ''}
                 onError={e => {
                   e.target.onerror = null;
-                  e.target.src =
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png';
+                  e.target.src = './noImage.png';
                 }}
               />
             </div>
@@ -36,7 +34,7 @@ const News = ({ news }) => (
         </Card.Body>
         <Card.Footer>
           <div className='content-news-card-footer'>
-            Published At {moment(n.publishedAt).format('YYYY-MM-DD HH:MM')} by <em>{n.author}</em>
+            Published At {moment(n.publishedAt).format('YYYY-MM-DD HH:MM')} <em>{n.author && 'by ' + n.author}</em>
           </div>
         </Card.Footer>
       </Card>

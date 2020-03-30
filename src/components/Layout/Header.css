@@ -20,23 +20,57 @@
 }
 
 .covid-logo-title {
-  font-size: 32px;
+  font-size: 30px;
   font-family: Arial;
   font-weight: bold;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 375px) {
   .covid-logo {
-    align-self: center;
+    margin-top: 15px;
   }
   .covid-logo-title {
     font-size: 20px;
+  }
+  .covid-logo-sub-title {
+    font-size: 12px;
+  }
+  .translate-button {
+    margin-right: 5px;
+  }
+  .config {
+    margin-left: -10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .covid-logo-title {
+    font-size: 18px;
+  }
+  .covid-logo-sub-title {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .covid-logo-title {
+    font-size: 16px;
+  }
+  .covid-logo-sub-title {
+    font-size: 12px;
+  }
+  .config {
+    font-size: 12px;
+  }
+  .config-select {
+    width: 60px;
+    font-size: 10px;
   }
 }
 
 .covid-logo-sub-title {
   font-weight: bold;
-  background-color: #688a68;
+  background-color: #228b22;
   border-radius: 10px;
 }
 
@@ -44,6 +78,7 @@
   font-size: 14px;
   margin-left: 10px;
   text-align: center;
+  margin-top: 1px;
 }
 
 .config-time {
@@ -68,4 +103,8 @@
   border: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+.translate-button {
+  margin-top: 10px;
 }

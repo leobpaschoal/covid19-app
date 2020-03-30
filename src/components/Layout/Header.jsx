@@ -1,12 +1,13 @@
 import React from 'react';
 import './Header.css';
 import Configurations from '../Stats/Configurations';
+import { ClockFill } from 'react-bootstrap-icons';
 import Badge from 'react-bootstrap/Badge';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import Container from 'react-bootstrap/Container';
-import { ClockFill } from 'react-bootstrap-icons';
+import { translate } from 'react-translate';
 
 const Header = ({
   lastUpdated,
@@ -14,7 +15,8 @@ const Header = ({
   handleChangeRefreshTime,
   handleRefreshChecked,
   refreshIsChecked,
-  refreshTime
+  refreshTime,
+  t
 }) => (
   <Container fluid className='header-container'>
     <div>
@@ -23,13 +25,13 @@ const Header = ({
       </div>
       <div className='covid-logo'>
         <div className='covid-logo-title'>COVID-19</div>
-        <div className='covid-logo-sub-title'>Real Time</div>
+        <div className='covid-logo-sub-title'>{t('subTitle')}</div>
       </div>
       <div className='config'>
         <div>
-          <OverlayTrigger key='bottom' placement='bottom' overlay={<Tooltip id='tooltipid'>UTC time</Tooltip>}>
+          <OverlayTrigger key='bottom' placement='bottom' overlay={<Tooltip id='tooltipid'>{t('utcTime')}</Tooltip>}>
             <span>
-              Last update <ClockFill size={12} />
+              {t('lastUpdate')} <ClockFill size={12} />
             </span>
           </OverlayTrigger>
         </div>
@@ -51,8 +53,11 @@ const Header = ({
           />
         </div>
       </div>
+      <div className='translate-button'>
+        <img alt={''} width={40} src={'./translateIcon.png'} />
+      </div>
     </div>
   </Container>
 );
 
-export default Header;
+export default translate('Header')(Header);

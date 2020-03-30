@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { translate } from 'react-translate';
 
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './Global.css';
 
-const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadingAllCases }) => {
+const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadingAllCases, t }) => {
   const handleLoadingGlobal = (name, value) => (
     <SpinnerLoad
       element={
@@ -49,22 +50,22 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
     <CardGroup>
       <Card>
         <Card.Header>
-          <h5>Worldwide</h5>
+          <h5>{t('cardTitle')}</h5>
           <div className='today-info'>
-            <p>Occurrences in the past 24 hours.</p>
+            <p>{t('information')}</p>
           </div>
         </Card.Header>
         <Card.Body>
           <div className='adjust-circles'>
             <div>
               <div className='sonar-emitter confirmed-bg'>
-                {handleLoadingGlobal('Confirmed', '+' + newCases)}
+                {handleLoadingGlobal(t('confirmed'), '+' + newCases)}
                 <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingGlobal('Deaths', '+' + newDeaths)}
+                {handleLoadingGlobal(t('deaths'), '+' + newDeaths)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>
@@ -83,20 +84,20 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
             />
           </h5>
           <div className='today-info'>
-            <p>Today's country with more deaths.</p>
+            <p>{t('informationCountry')}</p>
           </div>
         </Card.Header>
         <Card.Body>
           <div className='adjust-circles'>
             <div>
               <div className='sonar-emitter confirmed-bg'>
-                {handleLoadingAllCases('Confirmed', '+' + dayOccurrences.new_cases)}
+                {handleLoadingAllCases(t('confirmed'), '+' + dayOccurrences.new_cases)}
                 <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingAllCases('Deaths', '+' + dayOccurrences.new_deaths)}
+                {handleLoadingAllCases(t('deaths'), '+' + dayOccurrences.new_deaths)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>
@@ -106,4 +107,4 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
     </CardGroup>
   );
 };
-export default Today;
+export default translate('Today')(Today);

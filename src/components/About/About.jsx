@@ -1,48 +1,68 @@
 import React from 'react';
-import './About.css';
+import { translate } from 'react-translate';
 import Card from 'react-bootstrap/Card';
+import './About.css';
 
-const About = () => (
+const About = ({ t }) => (
   <div className='content-about'>
     <Card>
       <Card.Header>
-        <h4>About</h4>
+        <h4>{t('cardTitle')}</h4>
       </Card.Header>
       <Card.Body>
-        <p>Thank you for using my website covid19realtime.info!</p>
+        <p>{t('line1', { site: <b>covid19realtime.info!</b> })}</p>
+        <p>{t('line2')}</p>
+        <p>{t('line3')}</p>
+        <p>{t('line4')}</p>
+        <p>{t('line5')}</p>
+        <p>{t('line6')}</p>
+        <div>
+          <a
+            target='_blank'
+            href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QH2C9XXN4QBCE&source=url'
+            rel='noopener noreferrer'
+          >
+            <img
+              src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif'
+              border='0'
+              title='PayPal - The safer, easier way to pay online!'
+              alt='Donate with PayPal button'
+            />
+          </a>
+        </div>
+        <div className='pagseguroDonate'>
+          <a
+            href='https://pag.ae/7VTRrbvcK/button'
+            rel='noopener noreferrer'
+            target='_blank'
+            title='Pagar com PagSeguro'
+          >
+            <img
+              src='//assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/180x25-pagar-azul.gif'
+              alt='Pague com PagSeguro - é rápido, grátis e seguro!'
+            />
+          </a>
+        </div>
         <p>
-          The goal of covid19realtime.info is to provide the latest information on the COVID-19 coronavirus and to make
-          that information more accessible
+          <b>{t('dataSource')}: </b>
+          <span>WHO, CDC, ECDC, NHC, JHU CSSE, DXY & QQ</span>
         </p>
-        <p>
-          This site is designed, developed and funded by myself (leobpaschoal). It is the result of constant work;
-          updating, fixing and maintaining in order to provide the service. If you've found the site helpful or useful
-          then please consider donate to support my work.
-        </p>
-        <a
-          target='_blank'
-          href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FCJAJ89SMHG88&source=url'
-          rel=''
-        >
-          DONATE LINK
-        </a>
-        <form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>
-          <input type='hidden' name='cmd' value='_s-xclick' />
-          <input type='hidden' name='hosted_button_id' value='FCJAJ89SMHG88' />
-          <input
-            type='image'
-            src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif'
-            border='0'
-            name='submit'
-            title='PayPal - The safer, easier way to pay online!'
-            alt='Donate with PayPal button'
-          />
-          <img alt='' border='0' src='https://www.paypal.com/en_BR/i/scr/pixel.gif' width='1' height='1' />
-        </form>
-        <p>Data Sources WHO, CDC, ECDC, NHC, JHU CSSE, DXY & QQ</p>
+        <p>email: covid19realtime@gmail.com</p>
       </Card.Body>
     </Card>
   </div>
 );
 
-export default About;
+export default translate('About')(About);
+
+// Thank you for choosing covid19realtime.info. We appreciate it!
+
+// This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!
+
+// In addition to that, the News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.
+
+// Use the protection tips to find out a better way to protect yourself and your loved ones!
+
+// This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.
+
+// If you've found this website useful, please, consider making a donation to support my work!
