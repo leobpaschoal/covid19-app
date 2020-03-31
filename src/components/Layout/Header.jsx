@@ -6,7 +6,6 @@ import Badge from 'react-bootstrap/Badge';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import SpinnerLoad from '../Load/SpinnerLoad';
-import Container from 'react-bootstrap/Container';
 import { translate } from 'react-translate';
 
 const Header = ({
@@ -18,46 +17,42 @@ const Header = ({
   refreshTime,
   t
 }) => (
-  <Container fluid className='header-container'>
-    <div>
-      <div className='online-button'>
+  <div className='header-container'>
+    <div className='header-content'>
+      <div className='header-logo'>
+        COVID<font color=''>19</font> <span>Real time</span>{' '}
         <SpinnerLoad show size={'xl'} animation={'grow'} variant={refreshIsChecked ? 'success' : 'danger'} />
       </div>
-      <div className='covid-logo'>
-        <div className='covid-logo-title'>COVID-19</div>
-        <div className='covid-logo-sub-title'>{t('subTitle')}</div>
-      </div>
-      <div className='config'>
-        <div>
-          <OverlayTrigger key='bottom' placement='bottom' overlay={<Tooltip id='tooltipid'>{t('utcTime')}</Tooltip>}>
-            <span>
-              {t('lastUpdate')} <ClockFill size={12} />
-            </span>
-          </OverlayTrigger>
-        </div>
-        <div>
-          <SpinnerLoad
-            element={<Badge variant='info'>{lastUpdated}</Badge>}
-            show={loadingGlobalStats}
-            size={'sm'}
-            animation={'border'}
-            variant={'info'}
-          />
-        </div>
-        <div className='config-time'>
-          <Configurations
-            handleChangeRefreshTime={handleChangeRefreshTime}
-            handleRefreshChecked={handleRefreshChecked}
-            refreshIsChecked={refreshIsChecked}
-            refreshTime={refreshTime}
-          />
-        </div>
-      </div>
-      <div className='translate-button'>
-        <img alt={''} width={40} src={'./translateIcon.png'} />
+      <div className='header-configurations'>
+        <OverlayTrigger key='bottom' placement='bottom' overlay={<Tooltip id='tooltipid'>{t('utcTime')}</Tooltip>}>
+          <div className='last-update'>
+            <div>
+              <span>{t('lastUpdate')}</span>
+            </div>
+            <div>
+              <SpinnerLoad
+                element={
+                  <Badge variant='info'>
+                    {lastUpdated} <ClockFill size={14} />
+                  </Badge>
+                }
+                show={loadingGlobalStats}
+                size={'sm'}
+                animation={'border'}
+                variant={'info'}
+              />
+            </div>
+          </div>
+        </OverlayTrigger>
+        <Configurations
+          handleChangeRefreshTime={handleChangeRefreshTime}
+          handleRefreshChecked={handleRefreshChecked}
+          refreshIsChecked={refreshIsChecked}
+          refreshTime={refreshTime}
+        />
       </div>
     </div>
-  </Container>
+  </div>
 );
 
 export default translate('Header')(Header);

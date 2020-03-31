@@ -10,12 +10,15 @@ export const translationEn = {
       'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',
-    timeSelectHour: 'hour'
+    timeSelectHour: 'hour',
+    onLabel: 'On',
+    offLabel: 'Off'
   },
   Corona: {
     statisticsTab: 'Statistcs',
     newsTab: 'News',
-    aboutTab: 'About'
+    aboutTab: 'About',
+    tipsTab: 'Tips'
   },
   Global: {
     cardTitle: 'Global Statistics',
@@ -54,7 +57,7 @@ export const translationEn = {
     line1: 'Thank you for choosing {{site}} We appreciate it!',
     line2: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
     line3:
-      'In addition to that, the News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
+      'News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
     line4: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
     line5:
       'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
@@ -75,12 +78,15 @@ export const translationPtBr = {
       'Intervalo de tempo entre as atualizações do site. Acione o interruptor e escolha um horário para atualizar as estatísticas ou desligue o interruptor para congelar as atualizações',
     timeSelect: 'minuto',
     timeSelectPl: 'minutos',
-    timeSelectHour: 'hora'
+    timeSelectHour: 'hora',
+    onLabel: 'Ligado',
+    offLabel: 'Desligado'
   },
   Corona: {
     statisticsTab: 'Estatísticas',
     newsTab: 'Notícias',
-    aboutTab: 'Sobre nós'
+    aboutTab: 'Sobre nós',
+    tipsTab: 'Dicas'
   },
   Global: {
     cardTitle: 'Estatísticas Globais',
@@ -119,7 +125,7 @@ export const translationPtBr = {
     line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
     line2: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
     line3:
-      'Além disso, a guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
+      'A guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
     line4: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
     line5:
       'Esse site é o resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
@@ -139,11 +145,14 @@ export const translationEs = {
     information: 'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',
-    timeSelectHour: 'hour'
+    timeSelectHour: 'hour',
+    onLabel: 'Enc.',
+    offLabel: 'Apagado'
   },
   Corona: {
     statisticsTab: 'Statistcs',
     newsTab: 'News',
+    tipsTab: 'Consejos',
     aboutTab: 'About'
   },
   Global: {

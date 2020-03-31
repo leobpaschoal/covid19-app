@@ -1,13 +1,14 @@
 .nav-tabs {
   justify-content: space-around;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid #dee2e6;
   border-top: 0;
   border-radius: 0 0 4px 4px;
 }
 
 .nav-tabs .nav-link.active {
-  color: black;
+  color: #007bff;
+  font-weight: bold;
 }
 
 .nav-tabs .nav-link {
@@ -17,8 +18,8 @@
   margin-bottom: 0;
 }
 
-.nav-tabs a {
-  color: lightgrey;
+.nav-tabs .nav-link {
+  color: black;
 }
 
 .sonar-emitter {
@@ -144,10 +145,5 @@
 
   .-pageSizeOptions {
     display: none;
-  }
-
-  .nav-tabs {
-    font-size: 12px;
-    justify-content: center;
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { monitor, news } from '../../client';
-import { GraphUp, Newspaper, QuestionCircleFill } from 'react-bootstrap-icons';
 import { replaceStringToNumber, calcPercent } from '../Utils/Numbers';
 import { translate } from 'react-translate';
 import { countriesTranslated } from '../Utils/Utils';
@@ -10,7 +9,15 @@ import Global from './Global';
 import Today from './Today';
 import TableStats from './TableStats';
 import News from '../News/News';
+import Tips from '../Tips/Tips';
 import About from '../About/About';
+import {
+  HelpOutline,
+  DescriptionOutlined,
+  TrendingUpOutlined,
+  Translate,
+  EmojiObjectsOutlined
+} from '@material-ui/icons';
 
 import Container from 'react-bootstrap/Container';
 import Tabs from 'react-bootstrap/Tabs';
@@ -87,15 +94,18 @@ class Corona extends Component {
           );
 
           const dataCountriesStatsPrepared = dataCountriesStats.map(cbc => {
+            console.log(cbc.country_name);
             const objCountryFind = countriesTranslated.find(ct => ct.originalName === cbc.country_name);
             let chosenCountry = cbc.country_name; // Default api
 
-            if (this.props.tCountry === 'es') {
-              chosenCountry = objCountryFind.esName;
-            }
+            if (objCountryFind) {
+              if (this.props.tCountry === 'es') {
+                chosenCountry = objCountryFind.esName;
+              }
 
-            if (this.props.tCountry === 'br') {
-              chosenCountry = objCountryFind.brName;
+              if (this.props.tCountry === 'br') {
+                chosenCountry = objCountryFind.brName;
+              }
             }
 
             return {
@@ -144,13 +154,9 @@ class Corona extends Component {
     let country = 'us';
     let type = 'coronavirus';
 
-    switch (this.props.tCountry) {
-      case 'br':
-        country = 'br';
-        type = 'coronavírus';
-        break;
-      default:
-        break;
+    if (this.props.tCountry === 'br') {
+      country = 'br';
+      type = 'coronavírus';
     }
 
     await news()
@@ -243,7 +249,7 @@ class Corona extends Component {
               eventKey='global'
               title={
                 <span>
-                  {this.props.t('statisticsTab')} <GraphUp />
+                  {this.props.t('statisticsTab')} <TrendingUpOutlined />
                 </span>
               }
             >
@@ -266,21 +272,34 @@ class Corona extends Component {
               eventKey='news'
               title={
                 <span>
-                  {this.props.t('newsTab')} <Newspaper />
+                  {this.props.t('newsTab')} <DescriptionOutlined />
                 </span>
               }
             >
               <News news={news} />
             </Tab>
             <Tab
+              eventKey='tips'
+              title={
+                <span>
+                  {this.props.t('tipsTab')} <EmojiObjectsOutlined />
+                </span>
+              }
+            >
+              <Tips />
+            </Tab>
+            <Tab
               eventKey='about'
               title={
                 <span>
-                  {this.props.t('aboutTab')} <QuestionCircleFill />
+                  {this.props.t('aboutTab')} <HelpOutline />
                 </span>
               }
             >
               <About />
+            </Tab>
+            <Tab eventKey='translate' title={<Translate />}>
+              Translate
             </Tab>
           </Tabs>
         </Container>

@@ -1,110 +1,80 @@
 .header-container {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.header-container > div {
+  background-color: #222222;
+  color: white;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
-  height: 80px;
-  background-color: #050505;
-  color: white;
 }
 
-.online-button {
-  align-self: center;
-}
-
-.covid-logo {
+.header-content {
+  width: 400px;
   text-align: center;
 }
 
-.covid-logo-title {
-  font-size: 30px;
-  font-family: Arial;
+.header-logo {
+  font-family: 'Roboto', sans-serif;
+  text-transform: capitalize;
   font-weight: bold;
+  padding-top: 5px;
+  font-size: 26px;
 }
 
-@media (max-width: 375px) {
-  .covid-logo {
-    margin-top: 15px;
-  }
-  .covid-logo-title {
-    font-size: 20px;
-  }
-  .covid-logo-sub-title {
-    font-size: 12px;
-  }
-  .translate-button {
-    margin-right: 5px;
-  }
-  .config {
-    margin-left: -10px;
-  }
+.header-logo span {
+  background-color: #228b22;
+  padding: 0 8px 0 8px;
+  border-radius: 5px;
 }
 
-@media (max-width: 360px) {
-  .covid-logo-title {
-    font-size: 18px;
-  }
-  .covid-logo-sub-title {
-    font-size: 10px;
+.header-configurations {
+  display: flex;
+  justify-content: center;
+}
+
+.header-configurations .last-update {
+  margin-top: 4px;
+}
+
+.header-configurations .last-update svg {
+  margin-top: -3px;
+}
+
+.header-configurations .last-update span {
+  font-size: 12px;
+}
+
+.header-configurations-refresh {
+  margin-top: 3px;
+  margin-left: 15px;
+}
+
+.header-configurations-refresh .info {
+  display: flex;
+}
+
+.header-configurations-refresh .select-time select {
+  width: 85px;
+  height: 18px;
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.header-configurations-refresh .info-time-lapse {
+  margin-left: 5px;
+}
+
+.header-configurations-refresh .switch-button {
+  text-align: left;
+}
+
+@media (max-width: 425px) {
+  .header-configurations-refresh {
+    margin-left: 12px;
   }
 }
 
 @media (max-width: 320px) {
-  .covid-logo-title {
-    font-size: 16px;
+  .header-logo {
+    font-size: 24px;
   }
-  .covid-logo-sub-title {
-    font-size: 12px;
-  }
-  .config {
-    font-size: 12px;
-  }
-  .config-select {
-    width: 60px;
-    font-size: 10px;
-  }
-}
-
-.covid-logo-sub-title {
-  font-weight: bold;
-  background-color: #228b22;
-  border-radius: 10px;
-}
-
-.config {
-  font-size: 14px;
-  margin-left: 10px;
-  text-align: center;
-  margin-top: 1px;
-}
-
-.config-time {
-  margin-top: 10px;
-}
-
-.config-time > div {
-  display: flex;
-}
-
-.config-overlay-info {
-  margin-left: 20px;
-}
-
-.config-select-time {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.config-select {
-  border-radius: 5px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.translate-button {
-  margin-top: 10px;
 }
