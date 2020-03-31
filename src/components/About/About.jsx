@@ -47,7 +47,9 @@ const About = ({ t }) => (
           <b>{t('dataSource')}: </b>
           <span>WHO, CDC, ECDC, NHC, JHU CSSE, DXY & QQ</span>
         </p>
-        <p>email: covid19realtime@gmail.com</p>
+        <p>
+          <b>email:</b> covid19realtime@gmail.com
+        </p>
       </Card.Body>
     </Card>
   </div>

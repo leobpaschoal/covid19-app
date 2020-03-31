@@ -5,18 +5,21 @@ import { translate } from 'react-translate';
 import { countriesTranslated } from '../Utils/Utils';
 
 import Header from '../Layout/Header';
+import Configurations from '../Stats/Configurations';
 import Global from './Global';
 import Today from './Today';
 import TableStats from './TableStats';
 import News from '../News/News';
 import Tips from '../Tips/Tips';
 import About from '../About/About';
+
 import {
   HelpOutline,
   DescriptionOutlined,
   TrendingUpOutlined,
-  Translate,
-  EmojiObjectsOutlined
+  Language,
+  EmojiObjectsOutlined,
+  Settings
 } from '@material-ui/icons';
 
 import Container from 'react-bootstrap/Container';
@@ -55,7 +58,7 @@ class Corona extends Component {
 
   getGlobalStats = async () => {
     await monitor()
-      .get('/worldstat.php')
+      .get('/world_total_stat.php')
       .then(response => {
         if (response.statusText === 'OK') {
           const res = response.data;
@@ -94,7 +97,6 @@ class Corona extends Component {
           );
 
           const dataCountriesStatsPrepared = dataCountriesStats.map(cbc => {
-            console.log(cbc.country_name);
             const objCountryFind = countriesTranslated.find(ct => ct.originalName === cbc.country_name);
             let chosenCountry = cbc.country_name; // Default api
 
@@ -298,7 +300,15 @@ class Corona extends Component {
             >
               <About />
             </Tab>
-            <Tab eventKey='translate' title={<Translate />}>
+            <Tab eventKey='configuration' title={<Settings />}>
+              <Configurations
+                handleChangeRefreshTime={this.handleChangeRefreshTime}
+                handleRefreshChecked={this.handleRefreshChecked}
+                refreshIsChecked={refreshIsChecked}
+                refreshTime={refreshTime}
+              />
+            </Tab>
+            <Tab eventKey='translate' title={<Language />}>
               Translate
             </Tab>
           </Tabs>

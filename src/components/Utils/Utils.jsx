@@ -15,7 +15,7 @@ export const translationEn = {
     offLabel: 'Off'
   },
   Corona: {
-    statisticsTab: 'Statistcs',
+    statisticsTab: 'Statistics',
     newsTab: 'News',
     aboutTab: 'About',
     tipsTab: 'Tips'
@@ -150,7 +150,7 @@ export const translationEs = {
     offLabel: 'Apagado'
   },
   Corona: {
-    statisticsTab: 'Statistcs',
+    statisticsTab: 'Statistics',
     newsTab: 'News',
     tipsTab: 'Consejos',
     aboutTab: 'About'

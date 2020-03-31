@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import { translate } from 'react-translate';
+import { Warning, Schedule } from '@material-ui/icons';
 
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './Global.css';
@@ -50,7 +51,9 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
     <CardGroup>
       <Card>
         <Card.Header>
-          <h5>{t('cardTitle')}</h5>
+          <h5>
+            <Schedule /> {t('cardTitle')}
+          </h5>
           <div className='today-info'>
             <p>{t('information')}</p>
           </div>
@@ -76,7 +79,11 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
         <Card.Header>
           <h5>
             <SpinnerLoad
-              element={<span>{dayOccurrences.country_name}</span>}
+              element={
+                <span>
+                  <Warning /> {dayOccurrences.country_name}
+                </span>
+              }
               show={loadingAllCases}
               size={'sm'}
               animation={'border'}

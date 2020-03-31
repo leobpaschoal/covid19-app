@@ -8,6 +8,7 @@ import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import NumberFormat from 'react-number-format';
 import { ChevronExpand } from 'react-bootstrap-icons';
+import { TableChart } from '@material-ui/icons';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './TableStats.css';
 
@@ -16,7 +17,9 @@ const ReactTableFixedColumns = withFixedColumns(ReactTable);
 const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry, t }) => (
   <Card className='table-card-adjust'>
     <Card.Header>
-      <h5>{t('cardTitle')}</h5>
+      <h5>
+        <TableChart /> {t('cardTitle')}
+      </h5>
     </Card.Header>
     <Card.Body className='table-card-body-adjust'>
       <div>

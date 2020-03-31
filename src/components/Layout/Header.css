@@ -1,80 +1,26 @@
 .header-container {
-  background-color: #222222;
+  background-color: #424242;
   color: white;
-  padding-bottom: 10px;
   display: flex;
-  justify-content: center;
-}
-
-.header-content {
-  width: 400px;
-  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-logo {
   font-family: 'Roboto', sans-serif;
   text-transform: capitalize;
   font-weight: bold;
-  padding-top: 5px;
   font-size: 26px;
 }
 
 .header-logo span {
-  background-color: #228b22;
+  background-color: #2d9090;
   padding: 0 8px 0 8px;
   border-radius: 5px;
 }
 
-.header-configurations {
-  display: flex;
-  justify-content: center;
-}
-
-.header-configurations .last-update {
-  margin-top: 4px;
-}
-
-.header-configurations .last-update svg {
-  margin-top: -3px;
-}
-
-.header-configurations .last-update span {
-  font-size: 12px;
-}
-
-.header-configurations-refresh {
-  margin-top: 3px;
-  margin-left: 15px;
-}
-
-.header-configurations-refresh .info {
-  display: flex;
-}
-
-.header-configurations-refresh .select-time select {
-  width: 85px;
-  height: 18px;
-  font-size: 12px;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.header-configurations-refresh .info-time-lapse {
-  margin-left: 5px;
-}
-
-.header-configurations-refresh .switch-button {
-  text-align: left;
-}
-
-@media (max-width: 425px) {
-  .header-configurations-refresh {
-    margin-left: 12px;
-  }
-}
-
-@media (max-width: 320px) {
-  .header-logo {
-    font-size: 24px;
-  }
+.header-last-update {
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 5px;
 }

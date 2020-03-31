@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import NumberFormat from 'react-number-format';
+import { Public } from '@material-ui/icons';
 
 const Global = ({ globalStats, loadingGlobalStats, t }) => {
   const handleLoading = (name, value, percent) => (
@@ -36,7 +37,14 @@ const Global = ({ globalStats, loadingGlobalStats, t }) => {
   return (
     <Card className='global-card-align'>
       <Card.Header>
-        <h5>{t('cardTitle')}</h5>
+        <div className='global-card-title'>
+          <div>
+            <h5>
+              <Public /> {t('cardTitle')}
+            </h5>
+          </div>
+          <div></div>
+        </div>
       </Card.Header>
       <Card.Body>
         <Row className='global-stats'>
