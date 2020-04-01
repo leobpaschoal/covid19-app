@@ -50,7 +50,7 @@ class Corona extends Component {
     this.getNews();
   };
 
-  componentWillReceiveProps = nextProps => {
+  UNSAFE_componentWillReceiveProps = nextProps => {
     this.getSyncAll(true, this.state.refreshTime);
     this.getNews(nextProps.tCountry);
   };
@@ -261,6 +261,7 @@ class Corona extends Component {
           lastUpdated={globalStats.statistic_taken_at}
           loadingGlobalStats={loadingGlobalStats}
           refreshIsChecked={refreshIsChecked}
+          isDateFormatted={this.props.tCountry === 'br' ? true : false}
         />
         <Container>
           <Tabs activeKey={keyTab} onSelect={k => this.setKeyTab(k)}>
@@ -295,7 +296,7 @@ class Corona extends Component {
                 </span>
               }
             >
-              <News news={news} />
+              <News news={news} isDateFormatted={this.props.tCountry === 'br' ? true : false} />
             </Tab>
             <Tab
               eventKey='tips'

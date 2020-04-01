@@ -58,6 +58,9 @@ export const translationEn = {
     paginationRows: 'rows',
     paginationPage: 'Page'
   },
+  News: {
+    publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
+  },
   About: {
     cardTitle: 'About us',
     line1: 'Thank you for choosing {{site}} We appreciate it!',
@@ -133,6 +136,9 @@ export const translationPtBr = {
     paginationRows: 'linhas',
     paginationPage: 'Página'
   },
+  News: {
+    publishedAt: ['Publicado em [{{data}}] por {{author}}', 'Publicado em [{{data}}]']
+  },
   About: {
     cardTitle: 'Sobre nós',
     line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
@@ -206,6 +212,9 @@ export const translationEs = {
     paginationOf: 'of',
     paginationRows: 'rows',
     paginationPage: 'Page'
+  },
+  News: {
+    publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
   },
   About: {
     cardTitle: 'Sobre nós',

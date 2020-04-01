@@ -19,7 +19,30 @@
   color: black;
 }
 
-.switch-button-refresh {
+.configuration-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.configuration-timelapse-icon {
+  font-size: 50px;
+}
+
+.configuration-select {
+  width: 160px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.configuration-settings-icon {
+  margin-top: -3px;
+}
+
+.configuration-switch-button-refresh {
   margin-top: 10px;
 }
 

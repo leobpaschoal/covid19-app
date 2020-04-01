@@ -1,10 +1,11 @@
 import React from 'react';
+import { translate } from 'react-translate';
 import { Card, Badge } from 'react-bootstrap';
 import { OpenInNew } from '@material-ui/icons';
 import moment from 'moment';
 import './News.css';
 
-const News = ({ news }) => (
+const News = ({ news, isDateFormatted, t }) => (
   <div>
     {news.map((n, key) => (
       <Card key={key} className='news-card'>
@@ -19,7 +20,6 @@ const News = ({ news }) => (
               <div>
                 <img
                   alt={''}
-                  width={200}
                   src={n.urlToImage ? n.urlToImage : ''}
                   onError={e => {
                     e.target.onerror = null;
@@ -36,7 +36,28 @@ const News = ({ news }) => (
         </a>
         <Card.Footer>
           <div className='content-news-card-footer'>
-            Published At {moment(n.publishedAt).format('YYYY-MM-DD HH:MM')} <em>{n.author && 'by ' + n.author}</em>
+            {n.author
+              ? t('publishedAt', {
+                  n: 1,
+                  data: (
+                    <em>
+                      {isDateFormatted
+                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:MM')
+                        : moment(n.publishedAt).format('YYYY-MM-DD HH:MM')}
+                    </em>
+                  ),
+                  author: n.author
+                })
+              : t('publishedAt', {
+                  n: 2,
+                  data: (
+                    <em>
+                      {isDateFormatted
+                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:MM')
+                        : moment(n.publishedAt).format('YYYY-MM-DD HH:MM')}
+                    </em>
+                  )
+                })}
           </div>
         </Card.Footer>
       </Card>
@@ -44,4 +65,4 @@ const News = ({ news }) => (
   </div>
 );
 
-export default News;
+export default translate('News')(News);

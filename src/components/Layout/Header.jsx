@@ -4,8 +4,9 @@ import { QueryBuilder } from '@material-ui/icons';
 import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import { translate } from 'react-translate';
+import moment from 'moment';
 
-const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, t }) => (
+const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, isDateFormatted, t }) => (
   <div className='header-container'>
     <div className='header-logo'>
       COVID19 <span>Real time</span>{' '}
@@ -21,7 +22,10 @@ const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, t }) => (
             <SpinnerLoad
               element={
                 <Badge variant={refreshIsChecked ? 'success' : 'danger'}>
-                  {lastUpdated} <QueryBuilder style={{ fontSize: '14px', marginTop: '-2px' }} />
+                  {isDateFormatted
+                    ? moment(lastUpdated).format('DD/MM/YYYY HH:MM')
+                    : moment(lastUpdated).format('YYYY-MM-DD HH:MM')}{' '}
+                  <QueryBuilder style={{ fontSize: '14px', marginTop: '-2px' }} />
                 </Badge>
               }
               show={loadingGlobalStats}

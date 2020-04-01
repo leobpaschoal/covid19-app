@@ -1,32 +1,34 @@
 import React from 'react';
 import { translate } from 'react-translate';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
-import { ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import { Settings, Info, Timelapse } from '@material-ui/icons';
 
 const Configurations = ({ handleChangeRefreshTime, handleRefreshChecked, refreshIsChecked, refreshTime, t }) => (
-  <Card>
+  <Card className='configuration-card'>
     <Card.Header>
-      <h4>{t('configurations')}</h4>
+      <h4>
+        <Settings className='configuration-settings-icon' /> {t('configurations')}
+      </h4>
     </Card.Header>
-    <Card.Body>
+    <Card.Body className='configuration-body'>
       <div>
-        <ToggleButtonGroup name='toggleButton' value={refreshTime} onChange={e => handleChangeRefreshTime(e)}>
-          <ToggleButton variant='info' value={60000}>
-            1 {t('timeSelect')}
-          </ToggleButton>
-          <ToggleButton variant='secondary' value={60000 * 10}>
-            10 {t('timeSelectPl')}
-          </ToggleButton>
-          <ToggleButton value={60000 * 30}>30 {t('timeSelectPl')}</ToggleButton>
-          <ToggleButton variant='danger' value={60000 * 60}>
-            1 {t('timeSelectHour')}
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <select
+          className='configuration-select'
+          value={refreshTime}
+          onChange={e => handleChangeRefreshTime(e.target.value)}
+        >
+          <option value={60000}>1 {t('timeSelect')}</option>
+          <option value={60000 * 10}>10 {t('timeSelectPl')}</option>
+          <option value={60000 * 30}>30 {t('timeSelectPl')}</option>
+          <option value={60000 * 60}>1 {t('timeSelectHour')}</option>
+        </select>{' '}
+        <Timelapse style={{ fontSize: '30px', marginTop: '-4px' }} />
       </div>
-      <div className='switch-button-refresh'>
+      <div className='configuration-switch-button-refresh'>
         <BootstrapSwitchButton
           size={'xl'}
-          width={300}
+          width={240}
           checked={refreshIsChecked}
           onChange={() => handleRefreshChecked()}
           onstyle='success'
@@ -37,7 +39,9 @@ const Configurations = ({ handleChangeRefreshTime, handleRefreshChecked, refresh
       </div>
     </Card.Body>
     <Card.Footer>
-      <div>{t('information')}</div>
+      <div>
+        <Info /> {t('information')}
+      </div>
     </Card.Footer>
   </Card>
 );
