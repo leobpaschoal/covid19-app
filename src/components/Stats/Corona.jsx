@@ -13,6 +13,7 @@ import News from '../News/News';
 import Tips from '../Tips/Tips';
 import About from '../About/About';
 import Translate from '../Translate/Translate';
+import Errors from '../Utils/Errors';
 
 import {
   HelpOutline,
@@ -39,7 +40,9 @@ class Corona extends Component {
     refreshTime: 60000 * 10,
     refreshIsChecked: true,
     keyTab: 'global',
-    inputSearchCountry: ''
+    inputSearchCountry: '',
+    showError: false,
+    messageError: ''
   };
 
   componentDidMount = () => {
@@ -80,11 +83,11 @@ class Corona extends Component {
           console.log('======== worldstat ==========');
           console.log(this.state.globalStats);
         } else {
-          console.log('error worldstat');
+          this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
       .catch(e => {
-        console.log(e + ' --- catch! worldstat');
+        this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
 
@@ -146,11 +149,11 @@ class Corona extends Component {
           console.log('======== DAY OCCURENCES ==========');
           console.log(this.state.dayOccurrences);
         } else {
-          console.log('error cases_by_country');
+          this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
       .catch(e => {
-        console.log(e + 'catch! cases_by_country');
+        this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
 
@@ -179,12 +182,12 @@ class Corona extends Component {
         if (res.status === 'ok') {
           this.setState({ news: res.articles });
         } else {
-          console.log('error news');
+          this.handleError(this.props.t('messageErrorNews'));
         }
         this.setState({ loadingNews: false });
       })
       .catch(e => {
-        console.log(e + 'catch news');
+        this.handleError(this.props.t('messageErrorNews'));
       });
   };
 
@@ -218,6 +221,10 @@ class Corona extends Component {
     }
   };
 
+  handleError = msg => {
+    this.setState({ showError: !this.state.showError, messageError: msg });
+  };
+
   filterByCountry = value => {
     this.setState({
       inputSearchCountry: value,
@@ -242,11 +249,14 @@ class Corona extends Component {
       refreshTime,
       keyTab,
       news,
-      inputSearchCountry
+      inputSearchCountry,
+      showError,
+      messageError
     } = this.state;
 
     return (
       <div>
+        <Errors showError={showError} messageError={messageError} handleError={this.handleError} />
         <Header
           lastUpdated={globalStats.statistic_taken_at}
           loadingGlobalStats={loadingGlobalStats}

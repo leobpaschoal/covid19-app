@@ -5,6 +5,9 @@ export const translationEn = {
     lastUpdate: 'Last Update',
     utcTime: 'UTC Time'
   },
+  Errors: {
+    errorTitle: 'Error'
+  },
   Configurations: {
     configurations: 'Configurations',
     information:
@@ -19,7 +22,9 @@ export const translationEn = {
     statisticsTab: 'Statistics',
     newsTab: 'News',
     aboutTab: 'About us',
-    tipsTab: 'Tips'
+    tipsTab: 'Tips',
+    messageErrorNews: 'An error has occurred in news, please, contact us!',
+    messageErrorStatistics: 'An error has occurred in statistics, please, contact us!'
   },
   Global: {
     cardTitle: 'Global Statistics',
@@ -74,6 +79,9 @@ export const translationPtBr = {
     lastUpdate: 'Última atualização',
     utcTime: 'Horário UTC'
   },
+  Errors: {
+    errorTitle: 'Erro'
+  },
   Configurations: {
     configurations: 'Configurações',
     information:
@@ -88,7 +96,10 @@ export const translationPtBr = {
     statisticsTab: 'Estatísticas',
     newsTab: 'Notícias',
     aboutTab: 'Sobre nós',
-    tipsTab: 'Dicas'
+    tipsTab: 'Dicas',
+    messageErrorNews: 'Ocorreu um erro ao carregar as notícias. Por favor, entre em contato conosco!',
+    messageErrorStatistics: 'Ocorreu um erro ao carregar as estatísticas. Por favor, entre em contato conosco!',
+    errorTitle: 'Erro'
   },
   Global: {
     cardTitle: 'Estatísticas Globais',
@@ -143,6 +154,9 @@ export const translationEs = {
     lastUpdate: 'Last Update',
     utcTime: 'UTC Time'
   },
+  Errors: {
+    errorTitle: 'Error'
+  },
   Configurations: {
     configurations: 'Configurations',
     information: 'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics',
@@ -156,7 +170,10 @@ export const translationEs = {
     statisticsTab: 'Statistics',
     newsTab: 'News',
     tipsTab: 'Consejos',
-    aboutTab: 'About'
+    aboutTab: 'About',
+    messageErrorNews: 'Ha ocurrido un error en las noticias, por favor, contáctenos!',
+    messageErrorStatistics: 'Ha ocurrido un error en estadísticas, por favor, contáctenos!',
+    errorTitle: 'Error'
   },
   Global: {
     cardTitle: 'Global Statistics',
@@ -191,13 +208,16 @@ export const translationEs = {
     paginationPage: 'Page'
   },
   About: {
-    cardTitle: 'About',
-    firstP: 'Thank you for using my website covid19realtime.info!',
-    secondP:
-      'The goal of covid19realtime.info is to provide the latest information on the COVID-19 coronavirus and to make that information more accessible',
-    thirdP:
-      "This site is designed, developed and funded by myself (leobpaschoal). It is the result of constant work; updating, fixing and maintaining in order to provide the service. If you've found the site helpful or useful then please consider donate to support my work.",
-    dataSource: 'Data Sources'
+    cardTitle: 'Sobre nós',
+    line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
+    line2: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
+    line3:
+      'A guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
+    line4: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
+    line5:
+      'Esse site é o resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
+    line6: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
+    dataSource: 'Fontes de dados'
   }
 };
 
