@@ -44,8 +44,9 @@ const About = ({ t }) => (
           </a>
         </div>
         <p>
-          <b>{t('dataSource')}: </b>
-          <span>WHO, CDC, ECDC, NHC, JHU CSSE, DXY & QQ</span>
+          <b>{t('dataSource')}</b>
+          <br />
+          <span>WHO, CDC, ECDC, NHC, JHU CSSE, DXY QQ & NEWSAPI.ORG</span>
         </p>
         <p>
           <b>email:</b> covid19realtime@gmail.com

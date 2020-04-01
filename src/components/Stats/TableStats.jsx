@@ -7,8 +7,7 @@ import Card from 'react-bootstrap/Card';
 import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import NumberFormat from 'react-number-format';
-import { ChevronExpand } from 'react-bootstrap-icons';
-import { TableChart } from '@material-ui/icons';
+import { TableChart, UnfoldMore } from '@material-ui/icons';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './TableStats.css';
 
@@ -45,7 +44,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('countries')} <ChevronExpand size={14} />
+                          {t('countries')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       id: 'countryName',
@@ -62,7 +61,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('total')} <ChevronExpand size={14} />
+                          {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableCases',
@@ -73,7 +72,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('last24h')} <ChevronExpand size={14} />
+                          {t('last24h')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableNewCases',
@@ -90,7 +89,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('total')} <ChevronExpand size={14} />
+                          {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableInfecteds',
@@ -122,7 +121,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('total')} <ChevronExpand size={14} />
+                          {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableDeaths',
@@ -133,7 +132,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('last24h')} <ChevronExpand size={14} />
+                          {t('last24h')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableNewDeaths',
@@ -165,7 +164,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('total')} <ChevronExpand size={14} />
+                          {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableRecovered',
@@ -197,7 +196,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     {
                       Header: (
                         <span>
-                          {t('total')} <ChevronExpand size={14} />
+                          {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
                       accessor: 'tableCritical',

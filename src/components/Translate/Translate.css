@@ -1,0 +1,19 @@
+.translate-card {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.content-body-translate {
+  display: flex;
+  justify-content: space-around;
+}
+
+.content-body-translate a {
+  font-weight: bold;
+  color: black;
+}
+
+.content-body-translate a:hover {
+  text-decoration: none;
+  color: rgb(61, 118, 192);
+}

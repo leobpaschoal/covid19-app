@@ -1,5 +1,5 @@
 .header-container {
-  background-color: #424242;
+  background-color: #212121;
   color: white;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 }
 
 .header-logo span {
-  background-color: #2d9090;
+  background-color: #2b9292;
   padding: 0 8px 0 8px;
   border-radius: 5px;
 }

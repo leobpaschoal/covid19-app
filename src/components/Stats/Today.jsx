@@ -1,6 +1,5 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import { Card, CardGroup } from 'react-bootstrap';
 import { translate } from 'react-translate';
 import { Warning, Schedule } from '@material-ui/icons';
 

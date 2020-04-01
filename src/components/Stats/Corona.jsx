@@ -12,6 +12,7 @@ import TableStats from './TableStats';
 import News from '../News/News';
 import Tips from '../Tips/Tips';
 import About from '../About/About';
+import Translate from '../Translate/Translate';
 
 import {
   HelpOutline,
@@ -22,9 +23,7 @@ import {
   Settings
 } from '@material-ui/icons';
 
-import Container from 'react-bootstrap/Container';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+import { Container, Tabs, Tab } from 'react-bootstrap';
 import './Global.css';
 
 class Corona extends Component {
@@ -48,6 +47,11 @@ class Corona extends Component {
     this.getNews();
   };
 
+  componentWillReceiveProps = nextProps => {
+    this.getSyncAll(true, this.state.refreshTime);
+    this.getNews(nextProps.tCountry);
+  };
+
   getSyncAll = async (run, time) => {
     this.setState({ loadingGlobalStats: true, loadingAllCases: true });
     await this.getGlobalStats();
@@ -58,7 +62,7 @@ class Corona extends Component {
 
   getGlobalStats = async () => {
     await monitor()
-      .get('/world_total_stat.php')
+      .get('/worldstat.php')
       .then(response => {
         if (response.statusText === 'OK') {
           const res = response.data;
@@ -150,13 +154,18 @@ class Corona extends Component {
       });
   };
 
-  getNews = async () => {
+  getNews = async nextCountryProps => {
     this.setState({ loadingNews: true });
 
     let country = 'us';
     let type = 'coronavirus';
 
-    if (this.props.tCountry === 'br') {
+    if (nextCountryProps) {
+      if (nextCountryProps === 'br') {
+        country = 'br';
+        type = 'coronavírus';
+      }
+    } else if (this.props.tCountry === 'br') {
       country = 'br';
       type = 'coronavírus';
     }
@@ -201,10 +210,11 @@ class Corona extends Component {
     }
   };
 
-  handleChangeRefreshTime = event => {
-    this.setState({ refreshTime: event.target.value });
+  handleChangeRefreshTime = value => {
+    console.log(value);
+    this.setState({ refreshTime: value });
     if (this.state.refreshIsChecked) {
-      this.handleManageTimeout(true, event.target.value);
+      this.handleManageTimeout(true, value);
     }
   };
 
@@ -239,11 +249,8 @@ class Corona extends Component {
       <div>
         <Header
           lastUpdated={globalStats.statistic_taken_at}
-          handleChangeRefreshTime={this.handleChangeRefreshTime}
-          handleRefreshChecked={this.handleRefreshChecked}
-          refreshIsChecked={refreshIsChecked}
-          refreshTime={refreshTime}
           loadingGlobalStats={loadingGlobalStats}
+          refreshIsChecked={refreshIsChecked}
         />
         <Container>
           <Tabs activeKey={keyTab} onSelect={k => this.setKeyTab(k)}>
@@ -309,7 +316,7 @@ class Corona extends Component {
               />
             </Tab>
             <Tab eventKey='translate' title={<Language />}>
-              Translate
+              <Translate />
             </Tab>
           </Tabs>
         </Container>

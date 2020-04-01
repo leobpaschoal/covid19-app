@@ -1,41 +1,45 @@
 import React from 'react';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import { InfoCircleFill } from 'react-bootstrap-icons';
 import { translate } from 'react-translate';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+import { ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
 
 const Configurations = ({ handleChangeRefreshTime, handleRefreshChecked, refreshIsChecked, refreshTime, t }) => (
-  <div className='global-configurations-refresh'>
-    <div className='info-time-lapse'>
-      <OverlayTrigger key='bottom' placement='bottom' overlay={<Tooltip id='tooltipid'>{t('information')}</Tooltip>}>
-        <span>
-          <InfoCircleFill size={28} />
-        </span>
-      </OverlayTrigger>
-    </div>
-    <div className='switch-button'>
-      <BootstrapSwitchButton
-        size={'xs'}
-        checked={refreshIsChecked}
-        onChange={() => handleRefreshChecked()}
-        onstyle='success'
-        offstyle='danger'
-        onlabel={t('onLabel')}
-        offlabel={t('offLabel')}
-      />
-    </div>
-    <div className='info'>
-      <div className='select-time'>
-        <select onChange={e => handleChangeRefreshTime(e)} defaultValue={refreshTime}>
-          <option value={60000}>1 {t('timeSelect')}</option>
-          <option value={60000 * 10}>10 {t('timeSelectPl')}</option>
-          <option value={60000 * 30}>30 {t('timeSelectPl')}</option>
-          <option value={60000 * 60}>1 {t('timeSelectHour')}</option>
-        </select>
+  <Card>
+    <Card.Header>
+      <h4>{t('configurations')}</h4>
+    </Card.Header>
+    <Card.Body>
+      <div>
+        <ToggleButtonGroup name='toggleButton' value={refreshTime} onChange={e => handleChangeRefreshTime(e)}>
+          <ToggleButton variant='info' value={60000}>
+            1 {t('timeSelect')}
+          </ToggleButton>
+          <ToggleButton variant='secondary' value={60000 * 10}>
+            10 {t('timeSelectPl')}
+          </ToggleButton>
+          <ToggleButton value={60000 * 30}>30 {t('timeSelectPl')}</ToggleButton>
+          <ToggleButton variant='danger' value={60000 * 60}>
+            1 {t('timeSelectHour')}
+          </ToggleButton>
+        </ToggleButtonGroup>
       </div>
-    </div>
-  </div>
+      <div className='switch-button-refresh'>
+        <BootstrapSwitchButton
+          size={'xl'}
+          width={300}
+          checked={refreshIsChecked}
+          onChange={() => handleRefreshChecked()}
+          onstyle='success'
+          offstyle='danger'
+          onlabel={t('onLabel')}
+          offlabel={t('offLabel')}
+        />
+      </div>
+    </Card.Body>
+    <Card.Footer>
+      <div>{t('information')}</div>
+    </Card.Footer>
+  </Card>
 );
 
 export default translate('Configurations')(Configurations);

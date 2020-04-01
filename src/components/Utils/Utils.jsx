@@ -6,6 +6,7 @@ export const translationEn = {
     utcTime: 'UTC Time'
   },
   Configurations: {
+    configurations: 'Configurations',
     information:
       'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
     timeSelect: 'minute',
@@ -17,7 +18,7 @@ export const translationEn = {
   Corona: {
     statisticsTab: 'Statistics',
     newsTab: 'News',
-    aboutTab: 'About',
+    aboutTab: 'About us',
     tipsTab: 'Tips'
   },
   Global: {
@@ -53,7 +54,7 @@ export const translationEn = {
     paginationPage: 'Page'
   },
   About: {
-    cardTitle: 'About',
+    cardTitle: 'About us',
     line1: 'Thank you for choosing {{site}} We appreciate it!',
     line2: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
     line3:
@@ -74,6 +75,7 @@ export const translationPtBr = {
     utcTime: 'Horário UTC'
   },
   Configurations: {
+    configurations: 'Configurações',
     information:
       'Intervalo de tempo entre as atualizações do site. Acione o interruptor e escolha um horário para atualizar as estatísticas ou desligue o interruptor para congelar as atualizações',
     timeSelect: 'minuto',
@@ -90,7 +92,7 @@ export const translationPtBr = {
   },
   Global: {
     cardTitle: 'Estatísticas Globais',
-    confirmed: 'Confirmado',
+    confirmed: 'Confirmados',
     infecteds: 'Infectados',
     deaths: 'Mortes',
     recovered: 'Recuperados'
@@ -100,13 +102,13 @@ export const translationPtBr = {
     information: 'Ocorrências nas últimas 24 horas.',
     informationCountry: 'País com mais mortes hoje.',
     deaths: 'Mortes',
-    confirmed: 'Confirmado'
+    confirmed: 'Confirmados'
   },
   TableStats: {
     cardTitle: 'Estatísticas por País',
     inputSearchCountry: 'Procurar País',
     countries: 'Países',
-    confirmed: 'Confirmado',
+    confirmed: 'Confirmados',
     infecteds: 'Infectados',
     deaths: 'Mortes',
     recovered: 'Recuperados',
@@ -121,7 +123,7 @@ export const translationPtBr = {
     paginationPage: 'Página'
   },
   About: {
-    cardTitle: 'Sobre',
+    cardTitle: 'Sobre nós',
     line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
     line2: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
     line3:
@@ -142,6 +144,7 @@ export const translationEs = {
     utcTime: 'UTC Time'
   },
   Configurations: {
+    configurations: 'Configurations',
     information: 'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',

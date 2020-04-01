@@ -1,9 +1,7 @@
 import React from 'react';
 import './Header.css';
-import { ClockFill } from 'react-bootstrap-icons';
-import Badge from 'react-bootstrap/Badge';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import { QueryBuilder } from '@material-ui/icons';
+import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import { translate } from 'react-translate';
 
@@ -23,7 +21,7 @@ const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, t }) => (
             <SpinnerLoad
               element={
                 <Badge variant={refreshIsChecked ? 'success' : 'danger'}>
-                  {lastUpdated} <ClockFill size={12} />
+                  {lastUpdated} <QueryBuilder style={{ fontSize: '14px', marginTop: '-2px' }} />
                 </Badge>
               }
               show={loadingGlobalStats}

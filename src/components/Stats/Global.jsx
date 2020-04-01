@@ -2,9 +2,7 @@ import React from 'react';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import { translate } from 'react-translate';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
+import { Row, Col, Card } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { Public } from '@material-ui/icons';
 

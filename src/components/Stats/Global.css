@@ -19,6 +19,10 @@
   color: black;
 }
 
+.switch-button-refresh {
+  margin-top: 10px;
+}
+
 .sonar-emitter {
   text-align: center;
   line-height: 30px;
@@ -67,12 +71,6 @@
   justify-content: center;
 }
 
-.global-configurations-refresh {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
 .confirmed-bg {
   background-color: #3b79b7;
 }
@@ -111,6 +109,10 @@
 .global-card-title {
   display: flex;
   justify-content: space-between;
+}
+
+.card-header h5 svg {
+  margin-top: -3px;
 }
 
 .global-circle-percent {
