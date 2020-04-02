@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Language } from '@material-ui/icons';
 
 import './Translate.css';
 import Card from 'react-bootstrap/Card';
@@ -8,7 +9,9 @@ const Translate = () => (
   <div className='translate-card'>
     <Card>
       <Card.Header>
-        <h4>Translate</h4>
+        <h4>
+          <Language style={{ marginTop: '-4px' }} /> Translate
+        </h4>
       </Card.Header>
       <Card.Body>
         <div className='content-body-translate'>

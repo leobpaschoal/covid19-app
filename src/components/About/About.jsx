@@ -10,12 +10,13 @@ const About = ({ t }) => (
         <h4>{t('cardTitle')}</h4>
       </Card.Header>
       <Card.Body>
-        <p>{t('line1', { site: <b>covid19realtime.info!</b> })}</p>
+        <p>{t('line1', { site: <b>covid19realtime.info</b> })}</p>
         <p>{t('line2')}</p>
         <p>{t('line3')}</p>
         <p>{t('line4')}</p>
         <p>{t('line5')}</p>
         <p>{t('line6')}</p>
+        <p>{t('line7')}</p>
         <div>
           <a
             target='_blank'
@@ -46,7 +47,7 @@ const About = ({ t }) => (
         <p>
           <b>{t('dataSource')}</b>
           <br />
-          <span>WHO, CDC, ECDC, NHC, JHU CSSE, DXY QQ & NEWSAPI.ORG</span>
+          <span style={{ fontSize: '14px' }}>WHO, CDC, ECDC, NHC, JHU CSSE, DXY QQ & NEWSAPI.ORG</span>
         </p>
         <p>
           <b>email:</b> covid19realtime@gmail.com

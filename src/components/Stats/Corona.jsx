@@ -306,7 +306,7 @@ class Corona extends Component {
                 </span>
               }
             >
-              <Tips />
+              <Tips tCountry={this.props.tCountry} />
             </Tab>
             <Tab
               eventKey='about'

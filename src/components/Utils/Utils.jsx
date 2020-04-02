@@ -61,16 +61,29 @@ export const translationEn = {
   News: {
     publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
   },
+  Tips: {
+    cardTitle: 'Tips',
+    line1: 'Suggestions to reduce the spread of the corona virus and avoid being contaminated',
+    line2: 'Wash your hands with soap and water frequently. When it is not possible, use alcohol gel.',
+    line3: 'When sneezing or coughing, cover your nose and mouth, preferably with your arm.',
+    line4: 'Avoid crowds and closed places, especially if you have symptoms.',
+    line5: 'Keep environments well ventilated.',
+    line6: 'Do not share personal items.',
+    line7: 'Only leave the house if it is really necessary.',
+    line8: 'Look for the nearest health facility just in case of worsening symptoms.',
+    cardFooter: 'For more information please access: {{informationSite}}'
+  },
   About: {
     cardTitle: 'About us',
-    line1: 'Thank you for choosing {{site}} We appreciate it!',
-    line2: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
-    line3:
-      'News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
-    line4: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
-    line5:
+    line1: 'Thank you for choosing {{site}}',
+    line2: 'We appreciate it!',
+    line3: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
+    line4:
+      'The News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
+    line5: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
+    line6:
       'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
-    line6: "If you've found this website useful, please, consider making a donation to support my work!",
+    line7: "If you've found this website useful, please, consider making a donation to support my work!",
     dataSource: 'Data Sources'
   }
 };
@@ -139,16 +152,29 @@ export const translationPtBr = {
   News: {
     publishedAt: ['Publicado em [{{data}}] por {{author}}', 'Publicado em [{{data}}]']
   },
+  Tips: {
+    cardTitle: 'Dicas',
+    line1: 'Sugestões para reduzir a disseminação do corona vírus e evitar ser contaminado.',
+    line2: 'Lave as mãos com água e sabão frequentemente. Quando isso não for possível, use álcool em gel',
+    line3: 'Ao espirrar ou tossir cubra o nariz e boca, de preferência com o braço',
+    line4: 'Evite aglomerações e lugares fechados, principalmente se estiver com sintomas',
+    line5: 'Mantenha os ambientes bem arejados',
+    line6: 'Não compartilhe objetos pessoais',
+    line7: 'Só saia de casa se for realmente necessário',
+    line8: 'Procure a unidade de saúde mais próxima apenas no caso de agravamento dos sintomas',
+    cardFooter: 'Para mais informações acesse o site: {{informationSite}}'
+  },
   About: {
     cardTitle: 'Sobre nós',
-    line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
-    line2: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
-    line3:
+    line1: 'Obrigado por escolher o {{site}}',
+    line2: 'Nós agradecemos!',
+    line3: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
+    line4:
       'A guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
-    line4: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
-    line5:
+    line5: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
+    line6:
       'Esse site é o resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
-    line6: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
+    line7: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
     dataSource: 'Fontes de dados'
   }
 };
@@ -165,21 +191,21 @@ export const translationEs = {
   },
   Configurations: {
     configurations: 'Configurations',
-    information: 'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics',
+    information:
+      'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',
     timeSelectHour: 'hour',
-    onLabel: 'Enc.',
-    offLabel: 'Apagado'
+    onLabel: 'On',
+    offLabel: 'Off'
   },
   Corona: {
     statisticsTab: 'Statistics',
     newsTab: 'News',
-    tipsTab: 'Consejos',
-    aboutTab: 'About',
-    messageErrorNews: 'Ha ocurrido un error en las noticias, por favor, contáctenos!',
-    messageErrorStatistics: 'Ha ocurrido un error en estadísticas, por favor, contáctenos!',
-    errorTitle: 'Error'
+    aboutTab: 'About us',
+    tipsTab: 'Tips',
+    messageErrorNews: 'An error has occurred in news, please, contact us!',
+    messageErrorStatistics: 'An error has occurred in statistics, please, contact us!'
   },
   Global: {
     cardTitle: 'Global Statistics',
@@ -216,17 +242,30 @@ export const translationEs = {
   News: {
     publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
   },
+  Tips: {
+    cardTitle: 'Tips',
+    line1: 'Suggestions to reduce the spread of the corona virus and avoid being contaminated',
+    line2: 'Wash your hands with soap and water frequently. When it is not possible, use alcohol gel.',
+    line3: 'When sneezing or coughing, cover your nose and mouth, preferably with your arm.',
+    line4: 'Avoid crowds and closed places, especially if you have symptoms.',
+    line5: 'Keep environments well ventilated.',
+    line6: 'Do not share personal items.',
+    line7: 'Only leave the house if it is really necessary.',
+    line8: 'Look for the nearest health facility just in case of worsening symptoms.',
+    cardFooter: 'For more information please access: {{informationSite}}'
+  },
   About: {
-    cardTitle: 'Sobre nós',
-    line1: 'Obrigado por escolher o {{site}} Nós agradecemos!',
-    line2: 'Esse site foi desenvolvido para trazer informações sobre o coronavírus (covid-19) em TEMPO REAL!',
-    line3:
-      'A guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
-    line4: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
-    line5:
-      'Esse site é o resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
-    line6: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
-    dataSource: 'Fontes de dados'
+    cardTitle: 'About us',
+    line1: 'Thank you for choosing {{site}}',
+    line2: 'We appreciate it!',
+    line3: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
+    line4:
+      'The News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
+    line5: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
+    line6:
+      'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
+    line7: "If you've found this website useful, please, consider making a donation to support my work!",
+    dataSource: 'Data Sources'
   }
 };
 
