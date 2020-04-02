@@ -14,9 +14,7 @@ export const translationEn = {
       'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',
-    timeSelectHour: 'hour',
-    onLabel: 'On',
-    offLabel: 'Off'
+    timeSelectHour: 'hour'
   },
   Corona: {
     statisticsTab: 'Statistics',
@@ -63,14 +61,19 @@ export const translationEn = {
   },
   Tips: {
     cardTitle: 'Tips',
-    line1: 'Suggestions to reduce the spread of the corona virus and avoid being contaminated',
-    line2: 'Wash your hands with soap and water frequently. When it is not possible, use alcohol gel.',
-    line3: 'When sneezing or coughing, cover your nose and mouth, preferably with your arm.',
-    line4: 'Avoid crowds and closed places, especially if you have symptoms.',
-    line5: 'Keep environments well ventilated.',
-    line6: 'Do not share personal items.',
-    line7: 'Only leave the house if it is really necessary.',
-    line8: 'Look for the nearest health facility just in case of worsening symptoms.',
+    line1:
+      "Useful tips to help at decreasing/slowing the corona virus' spread and, also, to help you at avoiding being contaminated by it",
+    line2: 'Wash your hands with water and soap many times a day. Whenever possible, use hand sanitizer',
+    line3: 'Whenever you sneeze or cough, cover your mouth and nose using your arm rather than your hand',
+    line4: "Avoid crowds and closed sites, especially if you have the corona virus' symptoms",
+    line5: 'Keep the sites you are at well ventilated (open the windows whenever possible)',
+    line6: 'Do not share personal objects, especially hygiene objects',
+    line7: 'Only leave your house when strictly necessary (to go to the grocery store, pharmacy, hospital, etc.)',
+    line8: 'Only seek to medical attention if you develop emergency warning signs for covid-19, such as:',
+    list1: 'Trouble breathing',
+    list2: 'Persistent pain or pressure in the chest',
+    list3: 'New confusion or inability to arouse',
+    list4: 'Bluish lips or face',
     cardFooter: 'For more information please access: {{informationSite}}'
   },
   About: {
@@ -104,9 +107,7 @@ export const translationPtBr = {
       'Intervalo de tempo entre as atualizações do site. Acione o interruptor e escolha um horário para atualizar as estatísticas ou desligue o interruptor para congelar as atualizações',
     timeSelect: 'minuto',
     timeSelectPl: 'minutos',
-    timeSelectHour: 'hora',
-    onLabel: 'Ligado',
-    offLabel: 'Desligado'
+    timeSelectHour: 'hora'
   },
   Corona: {
     statisticsTab: 'Estatísticas',
@@ -161,7 +162,11 @@ export const translationPtBr = {
     line5: 'Mantenha os ambientes bem arejados',
     line6: 'Não compartilhe objetos pessoais',
     line7: 'Só saia de casa se for realmente necessário',
-    line8: 'Procure a unidade de saúde mais próxima apenas no caso de agravamento dos sintomas',
+    line8: 'Procure por assistência médica somente se desenvolver os sinais de emergência da covid-19 abaixo:',
+    list1: 'Dificuldade para respirar',
+    list2: 'Dor ou pressão persistente no peito',
+    list3: 'Confusão mental e falta de atenção',
+    list4: 'Rosto ou lábios pálidos',
     cardFooter: 'Para mais informações acesse o site: {{informationSite}}'
   },
   About: {
@@ -182,90 +187,93 @@ export const translationPtBr = {
 export const translationEs = {
   locale: 'es',
   Header: {
-    subTitle: 'Real Time',
-    lastUpdate: 'Last Update',
-    utcTime: 'UTC Time'
+    subTitle: 'Tiempo real',
+    lastUpdate: 'Última actualización',
+    utcTime: 'Hora UTC'
   },
   Errors: {
     errorTitle: 'Error'
   },
   Configurations: {
-    configurations: 'Configurations',
+    configurations: 'Configuraciones',
     information:
-      'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
-    timeSelect: 'minute',
-    timeSelectPl: 'minutes',
-    timeSelectHour: 'hour',
-    onLabel: 'On',
-    offLabel: 'Off'
+      'Lapso de tiempo entre actualizaciones del sitio. Encienda el interruptor y elija un momento para actualizar las estadísticas o apague el interruptor para congelar las actualizaciones',
+    timeSelect: 'minuto',
+    timeSelectPl: 'minutos',
+    timeSelectHour: 'hora'
   },
   Corona: {
-    statisticsTab: 'Statistics',
-    newsTab: 'News',
-    aboutTab: 'About us',
-    tipsTab: 'Tips',
-    messageErrorNews: 'An error has occurred in news, please, contact us!',
-    messageErrorStatistics: 'An error has occurred in statistics, please, contact us!'
+    statisticsTab: 'Estadísticas',
+    newsTab: 'Noticias',
+    aboutTab: 'Sobre',
+    tipsTab: 'Consejos',
+    messageErrorNews: 'Se ha producido un error en las noticias, contáctanos.',
+    messageErrorStatistics: 'Se ha producido un error en las estadísticas, contáctenos.'
   },
   Global: {
-    cardTitle: 'Global Statistics',
-    confirmed: 'Confirmed',
-    infecteds: 'Infecteds',
-    deaths: 'Deaths',
-    recovered: 'Recovered'
+    cardTitle: 'Estadísticas Globales',
+    confirmed: 'Confirmados',
+    infecteds: 'Infectados',
+    deaths: 'Muertes',
+    recovered: 'Recuperados'
   },
   Today: {
-    cardTitle: 'Worldwide',
-    information: 'Occurrences in the past 24 hours.',
-    informationCountry: "Today's country with more deaths.",
-    deaths: 'Deaths',
-    confirmed: 'Confirmed'
+    cardTitle: 'En todo el mundo',
+    information: 'Ocurrencias en las últimas 24 horas.',
+    informationCountry: 'El país de hoy con más muertes.',
+    deaths: 'Muertes',
+    confirmed: 'Confirmados'
   },
   TableStats: {
-    cardTitle: 'Countries Statistics',
-    inputSearchCountry: 'Search Country',
-    countries: 'Countries',
-    confirmed: 'Confirmed',
-    infecteds: 'Infecteds',
-    deaths: 'Deaths',
-    recovered: 'Recovered',
-    critical: 'Critical',
+    cardTitle: 'Estadísticas de Países',
+    inputSearchCountry: 'Buscar país',
+    countries: 'Países',
+    confirmed: 'Confirmados',
+    infecteds: 'Infectados',
+    deaths: 'Muertes',
+    recovered: 'Recuperados',
+    critical: 'Crítico',
     total: 'Total',
-    last24h: 'Last 24h',
-    percent: 'Percent',
-    paginationPrevious: 'Previous',
-    paginationNext: 'Next',
-    paginationOf: 'of',
-    paginationRows: 'rows',
-    paginationPage: 'Page'
+    last24h: 'Últimas 24h',
+    percent: 'Por ciento',
+    paginationPrevious: 'Anterior',
+    paginationNext: 'próximo',
+    paginationOf: 'de',
+    paginationRows: 'filas',
+    paginationPage: 'Página'
   },
   News: {
-    publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
+    publishedAt: ['Publicado en [{{data}}] por {{author}}', 'publicado en [{{data}}]']
   },
   Tips: {
-    cardTitle: 'Tips',
-    line1: 'Suggestions to reduce the spread of the corona virus and avoid being contaminated',
-    line2: 'Wash your hands with soap and water frequently. When it is not possible, use alcohol gel.',
-    line3: 'When sneezing or coughing, cover your nose and mouth, preferably with your arm.',
-    line4: 'Avoid crowds and closed places, especially if you have symptoms.',
-    line5: 'Keep environments well ventilated.',
-    line6: 'Do not share personal items.',
-    line7: 'Only leave the house if it is really necessary.',
-    line8: 'Look for the nearest health facility just in case of worsening symptoms.',
-    cardFooter: 'For more information please access: {{informationSite}}'
+    cardTitle: 'Consejos',
+    line1: 'Sugerencias para reducir la propagación del virus corona y evitar contaminarse',
+    line2: 'Lávese las manos con agua y jabón con frecuencia. Cuando no es posible usar alcohol gel',
+    line3: 'Al estornudar o toser, cubra su nariz y boca preferiblemente con su brazo',
+    line4: 'Evite las multitudes y los lugares cerrados, especialmente si tiene síntomas',
+    line5: 'Mantenga los ambientes bien ventilados',
+    line6: 'No comparta artículos personales',
+    line7: 'Solo sal de la casa si es realmente necesario',
+    line8: 'Busque el centro de salud más cercano en caso de empeoramiento de los síntomas:',
+    list1: 'Dificultad para respirar',
+    list2: 'Dolor o presión persistente en el pecho',
+    list3: 'Confusión mental y falta de atención',
+    list4: 'Cara o labios pálidos',
+    cardFooter: 'Para obtener más información, acceda a: {{informationSite}}'
   },
   About: {
-    cardTitle: 'About us',
-    line1: 'Thank you for choosing {{site}}',
-    line2: 'We appreciate it!',
-    line3: 'This site was developed to bring information regarding the corona virus (covid-19) in REAL TIME!',
+    cardTitle: 'Sobre nosotros',
+    line1: 'Gracias por elegir {{site}}',
+    line2: '¡Lo apreciamos!',
+    line3: 'Este sitio fue desarrollado para brindar información sobre el virus corona (covid-19) in ¡TIEMPO REAL!',
     line4:
-      'The News tab contains important information and links to let you know everything about COVID-19 that is happening around the globe.',
-    line5: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
+      'La pestaña Noticias contiene información importante y enlaces para hacerle saber todo acerca de COVID-19 que está sucediendo en todo el mundo.',
+    line5:
+      '¡Use los consejos de protección para descubrir una mejor manera de protegerse y proteger a su ser querido unos!',
     line6:
-      'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
-    line7: "If you've found this website useful, please, consider making a donation to support my work!",
-    dataSource: 'Data Sources'
+      'Este sitio web es el resultado de mi trabajo y mi deseo de compartir verdadero / correcto información con respecto al covid-19 para apoyar nuestra lucha mundial contra él.',
+    line7: 'Si este sitio le resulta útil, considere hacer una donación para apoyar mi trabajo',
+    dataSource: 'Fuentes de datos'
   }
 };
 

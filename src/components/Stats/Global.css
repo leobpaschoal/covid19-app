@@ -182,21 +182,16 @@
     display: none;
   }
 
-  .nav-tabs .nav-link {
-    padding: 5px;
-  }
-}
-
-@media (max-width: 550px) {
   .nav-tabs {
     flex-wrap: nowrap;
     text-align: center;
     align-items: center;
-  }
-
-  .nav-tabs {
     border-bottom: 1px solid #dee2e6;
     font-size: 12px;
+  }
+
+  .nav-tabs .nav-link {
+    padding: 5px;
   }
 }
 

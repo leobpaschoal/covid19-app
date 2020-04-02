@@ -80,8 +80,6 @@ class Corona extends Component {
           res.percentRecovered = calcPercent(res.total_recovered, res.total_cases);
 
           this.setState({ globalStats: res });
-          console.log('======== worldstat ==========');
-          console.log(this.state.globalStats);
         } else {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
@@ -96,9 +94,6 @@ class Corona extends Component {
       .get('/cases_by_country.php')
       .then(response => {
         if (response.statusText === 'OK') {
-          console.log('======== cases_by_country ==========');
-          console.log(response);
-
           const dataCountriesStats = response.data.countries_stat.sort(
             (a, b) => replaceStringToNumber(b.cases) - replaceStringToNumber(a.cases)
           );
@@ -146,8 +141,6 @@ class Corona extends Component {
           this.setState({
             dayOccurrences: dataCountriesStatsPrepared.find(dcs => replaceStringToNumber(dcs.new_deaths) === maxValue)
           });
-          console.log('======== DAY OCCURENCES ==========');
-          console.log(this.state.dayOccurrences);
         } else {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
@@ -176,9 +169,7 @@ class Corona extends Component {
     await news()
       .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
       .then(response => {
-        console.log('======== NEWS ==========');
         const res = response.data;
-        console.log(response);
         if (res.status === 'ok') {
           this.setState({ news: res.articles });
         } else {
@@ -214,7 +205,6 @@ class Corona extends Component {
   };
 
   handleChangeRefreshTime = value => {
-    console.log(value);
     this.setState({ refreshTime: value });
     if (this.state.refreshIsChecked) {
       this.handleManageTimeout(true, value);
@@ -261,7 +251,7 @@ class Corona extends Component {
           lastUpdated={globalStats.statistic_taken_at}
           loadingGlobalStats={loadingGlobalStats}
           refreshIsChecked={refreshIsChecked}
-          isDateFormatted={this.props.tCountry === 'br' ? true : false}
+          tCountry={this.props.tCountry}
         />
         <Container>
           <Tabs activeKey={keyTab} onSelect={k => this.setKeyTab(k)}>

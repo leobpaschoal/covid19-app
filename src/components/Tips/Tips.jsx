@@ -54,6 +54,12 @@ const Tips = ({ tCountry, t }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <KeyboardArrowRight /> {t('line8')}
+              <ul style={{ fontSize: '14px' }}>
+                <li>{t('list1')}</li>
+                <li>{t('list2')}</li>
+                <li>{t('list3')}</li>
+                <li>{t('list4')}</li>
+              </ul>
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>

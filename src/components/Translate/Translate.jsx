@@ -9,9 +9,7 @@ const Translate = () => (
   <div className='translate-card'>
     <Card>
       <Card.Header>
-        <h4>
-          <Language style={{ marginTop: '-4px' }} /> Translate
-        </h4>
+        <Language style={{ fontSize: '30px' }} />
       </Card.Header>
       <Card.Body>
         <div className='content-body-translate'>

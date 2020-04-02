@@ -2,7 +2,7 @@ import React from 'react';
 import { translate } from 'react-translate';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import Card from 'react-bootstrap/Card';
-import { Settings, Info, Timelapse } from '@material-ui/icons';
+import { Settings, Info, Timelapse, ThumbUp, ThumbDown } from '@material-ui/icons';
 
 const Configurations = ({ handleChangeRefreshTime, handleRefreshChecked, refreshIsChecked, refreshTime, t }) => (
   <Card className='configuration-card'>
@@ -33,8 +33,8 @@ const Configurations = ({ handleChangeRefreshTime, handleRefreshChecked, refresh
           onChange={() => handleRefreshChecked()}
           onstyle='success'
           offstyle='danger'
-          onlabel={t('onLabel')}
-          offlabel={t('offLabel')}
+          onlabel={<ThumbUp />}
+          offlabel={<ThumbDown />}
         />
       </div>
     </Card.Body>

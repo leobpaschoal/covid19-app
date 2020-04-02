@@ -207,7 +207,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                   ]
                 }
               ]}
-              defaultPageSize={20}
+              defaultPageSize={25}
+              pageSizeOptions={[25, 50, 100]}
               className='table'
               showPageJump={false}
               previousText={t('paginationPrevious')}
