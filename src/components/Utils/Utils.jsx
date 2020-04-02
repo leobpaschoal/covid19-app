@@ -62,11 +62,11 @@ export const translationEn = {
   Tips: {
     cardTitle: 'Tips',
     line1:
-      "Useful tips to help at decreasing/slowing the corona virus' spread and, also, to help you at avoiding being contaminated by it",
+      "Useful tips to help at decreasing/slowing the corona virus' spread and, also, to help you avoid being contaminated",
     line2: 'Wash your hands with water and soap many times a day. Whenever possible, use hand sanitizer',
     line3: 'Whenever you sneeze or cough, cover your mouth and nose using your arm rather than your hand',
     line4: "Avoid crowds and closed sites, especially if you have the corona virus' symptoms",
-    line5: 'Keep the sites you are at well ventilated (open the windows whenever possible)',
+    line5: 'Keep the places where you are well ventilated (open the windows whenever possible)',
     line6: 'Do not share personal objects, especially hygiene objects',
     line7: 'Only leave your house when strictly necessary (to go to the grocery store, pharmacy, hospital, etc.)',
     line8: 'Only seek to medical attention if you develop emergency warning signs for covid-19, such as:',
@@ -86,7 +86,8 @@ export const translationEn = {
     line5: 'Use the protection tips to find out a better way to protect yourself and your loved ones!',
     line6:
       'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
-    line7: "If you've found this website useful, please, consider making a donation to support my work!",
+    line7: "If you've found this website useful, consider making a donation to support my work!",
+    donate: 'Donate',
     dataSource: 'Data Sources'
   }
 };
@@ -178,8 +179,9 @@ export const translationPtBr = {
       'A guia Notícias contém informações e links importantes para que você saiba tudo sobre o COVID-19 ao redor de todo o mundo.',
     line5: 'Use as dicas de proteção para descobrir uma maneira melhor de proteger você e seus entes queridos!',
     line6:
-      'Esse site é o resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
+      'Esse site é resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
     line7: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
+    donate: 'Doar',
     dataSource: 'Fontes de dados'
   }
 };
@@ -232,15 +234,15 @@ export const translationEs = {
     infecteds: 'Infectados',
     deaths: 'Muertes',
     recovered: 'Recuperados',
-    critical: 'Crítico',
+    critical: 'Critico',
     total: 'Total',
     last24h: 'Últimas 24h',
     percent: 'Por ciento',
     paginationPrevious: 'Anterior',
-    paginationNext: 'próximo',
+    paginationNext: 'Siguiente',
     paginationOf: 'de',
     paginationRows: 'filas',
-    paginationPage: 'Página'
+    paginationPage: 'Pagina'
   },
   News: {
     publishedAt: ['Publicado en [{{data}}] por {{author}}', 'publicado en [{{data}}]']
@@ -273,6 +275,7 @@ export const translationEs = {
     line6:
       'Este sitio web es el resultado de mi trabajo y mi deseo de compartir verdadero / correcto información con respecto al covid-19 para apoyar nuestra lucha mundial contra él.',
     line7: 'Si este sitio le resulta útil, considere hacer una donación para apoyar mi trabajo',
+    donate: 'Donar',
     dataSource: 'Fuentes de datos'
   }
 };

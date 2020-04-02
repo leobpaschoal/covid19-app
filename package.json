@@ -1,5 +1,6 @@
 {
   "name": "covid19-app",
+  "homepage": "http://covid19realtime.info",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

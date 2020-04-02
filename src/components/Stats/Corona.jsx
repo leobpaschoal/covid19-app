@@ -69,7 +69,6 @@ class Corona extends Component {
       .then(response => {
         if (response.statusText === 'OK') {
           const res = response.data;
-
           const totalCases = replaceStringToNumber(res.total_cases);
           const totalRecovered = replaceStringToNumber(res.total_recovered);
           const totalDeaths = replaceStringToNumber(res.total_deaths);
