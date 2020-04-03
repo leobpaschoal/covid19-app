@@ -17,31 +17,26 @@ const About = ({ t }) => (
         <p>{t('line5')}</p>
         <p>{t('line6')}</p>
         <p>{t('line7')}</p>
-        <div className='about-buttons'>
-          <div>
-            <a
-              target='_blank'
-              href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QH2C9XXN4QBCE&source=url'
-              rel='noopener noreferrer'
-            >
-              <div>
-                <img src='./pay/paypal.png' alt='Paypal' />
-              </div>
-              <div>
-                <button className='donate-buttons paypal-button'>{t('donate')}</button>
-              </div>
-            </a>
-          </div>
-          <div className='pagseguro-donate'>
-            <a href='https://pag.ae/7VTRrbvcK/button' rel='noopener noreferrer' target='_blank'>
-              <img src='./pay/pagseguro.png' alt='Pagseguro' />
-              <div>
-                <button className='donate-buttons pagseguro-button'>{t('donate')}</button>
-              </div>
-            </a>
-          </div>
+        <div>
+          <a
+            target='_blank'
+            href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QH2C9XXN4QBCE&source=url'
+            rel='noopener noreferrer'
+          >
+            <div>
+              <img className='paypal-images' src='./pay/paypal.png' alt='Paypal' />
+            </div>
+            <div>
+              <button className='paypal-button'>{t('donate')}</button>
+            </div>
+          </a>
+        </div>
+        <hr />
+        <div className='picpay-donate'>
+          <img className='picpay-image' src='./pay/picpay.jpg' alt='Picpay' />
         </div>
         <p>
+          <br />
           <b>{t('dataSource')}</b>
           <br />
           <span style={{ fontSize: '14px' }}>WHO, CDC, ECDC, NHC, JHU CSSE, DXY QQ & NEWSAPI.ORG</span>

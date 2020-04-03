@@ -50,8 +50,11 @@ class Corona extends Component {
     this.getNews();
   };
 
-  UNSAFE_componentWillReceiveProps = nextProps => {
-    this.getSyncAll(true, this.state.refreshTime);
+  UNSAFE_componentWillReceiveProps = async nextProps => {
+    this.setState({ loadingGlobalStats: true, loadingAllCases: true });
+    await this.getGlobalStats();
+    await this.getAllCases();
+    this.setState({ loadingGlobalStats: false, loadingAllCases: false });
     this.getNews(nextProps.tCountry);
   };
 
@@ -183,7 +186,6 @@ class Corona extends Component {
 
   handleManageTimeout = (run, time) => {
     clearTimeout(this.state.manageTimeout);
-
     if (run) {
       this.setState({
         manageTimeout: setTimeout(() => {

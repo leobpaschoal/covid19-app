@@ -4,51 +4,31 @@
   text-align: center;
 }
 
-.about-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.about-buttons img {
+.paypal-images {
   width: 150px;
-  height: 55px;
 }
 
-.pagseguro-donate {
-  margin-left: 50px;
-}
-
-.donate-buttons {
-  width: 120px;
-  height: 35px;
+.paypal-button {
+  width: 100px;
+  height: 20px;
   border-radius: 10px;
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   margin-top: 10px;
   color: white;
   border: 0;
-}
-
-.donate-buttons:hover {
-  opacity: 0.8;
-}
-
-.pagseguro-button {
-  background-color: #487714;
-}
-
-.paypal-button {
   background-color: #003687;
 }
 
-@media (max-width: 425px) {
-  .about-buttons img {
-    width: 110px;
-    height: 40px;
-  }
-  .pagseguro-donate {
-    margin-left: 30px;
-  }
+.picpay-donate {
+  margin-top: 10px;
+}
+
+.picpay-image {
+  width: 160px;
+}
+
+.paypal-button:hover {
+  opacity: 0.8;
 }
