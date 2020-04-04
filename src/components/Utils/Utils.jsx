@@ -3,10 +3,10 @@ export const translationEn = {
   Header: {
     subTitle: 'Real Time',
     lastUpdate: 'Last Update',
-    utcTime: 'UTC Time'
+    utcTime: 'UTC Time',
   },
   Errors: {
-    errorTitle: 'Error'
+    errorTitle: 'Error',
   },
   Configurations: {
     configurations: 'Configurations',
@@ -14,7 +14,7 @@ export const translationEn = {
       'Time lapse between site updates. Turn the switch on and pick a time to refresh the statistics or turn off the switch to freeze updates',
     timeSelect: 'minute',
     timeSelectPl: 'minutes',
-    timeSelectHour: 'hour'
+    timeSelectHour: 'hour',
   },
   Corona: {
     statisticsTab: 'Statistics',
@@ -22,21 +22,21 @@ export const translationEn = {
     aboutTab: 'About us',
     tipsTab: 'Tips',
     messageErrorNews: 'An error has occurred in news, please, contact us!',
-    messageErrorStatistics: 'An error has occurred in statistics, please, contact us!'
+    messageErrorStatistics: 'An error has occurred in statistics, please, contact us!',
   },
   Global: {
     cardTitle: 'Global Statistics',
     confirmed: 'Confirmed',
     infecteds: 'Infecteds',
     deaths: 'Deaths',
-    recovered: 'Recovered'
+    recovered: 'Recovered',
   },
   Today: {
     cardTitle: 'Worldwide',
     information: 'Occurrences in the past 24 hours.',
     informationCountry: "Today's country with more deaths.",
     deaths: 'Deaths',
-    confirmed: 'Confirmed'
+    confirmed: 'Confirmed',
   },
   TableStats: {
     cardTitle: 'Countries Statistics',
@@ -54,10 +54,11 @@ export const translationEn = {
     paginationPrevious: 'Previous',
     paginationNext: 'Next',
     paginationOf: 'of',
-    paginationRows: 'rows'
+    paginationRows: 'rows',
+    paginationPage: 'Page',
   },
   News: {
-    publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
+    publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]'],
   },
   Tips: {
     cardTitle: 'Tips',
@@ -74,7 +75,7 @@ export const translationEn = {
     list2: 'Persistent pain or pressure in the chest',
     list3: 'New confusion or inability to arouse',
     list4: 'Bluish lips or face',
-    cardFooter: 'For more information please access: {{informationSite}}'
+    cardFooter: 'For more information please access: {{informationSite}}',
   },
   About: {
     cardTitle: 'About us',
@@ -88,8 +89,8 @@ export const translationEn = {
       'This website is the result of my work and my wish to share true/correct information regarding the covid-19 to support our worldwide fight against it.',
     line7: "If you've found this website useful, consider making a donation to support my work!",
     donate: 'Donate',
-    dataSource: 'Data Sources'
-  }
+    dataSource: 'Data Sources',
+  },
 };
 
 export const translationPtBr = {
@@ -97,10 +98,10 @@ export const translationPtBr = {
   Header: {
     subTitle: 'Tempo Real',
     lastUpdate: 'Última atualização',
-    utcTime: 'Horário UTC'
+    utcTime: 'Horário UTC',
   },
   Errors: {
-    errorTitle: 'Erro'
+    errorTitle: 'Erro',
   },
   Configurations: {
     configurations: 'Configurações',
@@ -108,7 +109,7 @@ export const translationPtBr = {
       'Intervalo de tempo entre as atualizações do site. Acione o interruptor e escolha um horário para atualizar as estatísticas ou desligue o interruptor para congelar as atualizações',
     timeSelect: 'minuto',
     timeSelectPl: 'minutos',
-    timeSelectHour: 'hora'
+    timeSelectHour: 'hora',
   },
   Corona: {
     statisticsTab: 'Estatísticas',
@@ -117,21 +118,21 @@ export const translationPtBr = {
     tipsTab: 'Dicas',
     messageErrorNews: 'Ocorreu um erro ao carregar as notícias. Por favor, entre em contato conosco!',
     messageErrorStatistics: 'Ocorreu um erro ao carregar as estatísticas. Por favor, entre em contato conosco!',
-    errorTitle: 'Erro'
+    errorTitle: 'Erro',
   },
   Global: {
     cardTitle: 'Estatísticas Globais',
     confirmed: 'Confirmados',
     infecteds: 'Infectados',
     deaths: 'Mortes',
-    recovered: 'Recuperados'
+    recovered: 'Recuperados',
   },
   Today: {
     cardTitle: 'No mundo todo',
     information: 'Ocorrências nas últimas 24 horas.',
     informationCountry: 'País com mais mortes hoje.',
     deaths: 'Mortes',
-    confirmed: 'Confirmados'
+    confirmed: 'Confirmados',
   },
   TableStats: {
     cardTitle: 'Estatísticas por País',
@@ -150,10 +151,10 @@ export const translationPtBr = {
     paginationNext: 'Próxima',
     paginationOf: 'de',
     paginationRows: 'linhas',
-    paginationPage: 'Página'
+    paginationPage: 'Página',
   },
   News: {
-    publishedAt: ['Publicado em [{{data}}] por {{author}}', 'Publicado em [{{data}}]']
+    publishedAt: ['Publicado em [{{data}}] por {{author}}', 'Publicado em [{{data}}]'],
   },
   Tips: {
     cardTitle: 'Dicas',
@@ -169,7 +170,7 @@ export const translationPtBr = {
     list2: 'Dor ou pressão persistente no peito',
     list3: 'Confusão mental e falta de atenção',
     list4: 'Rosto ou lábios pálidos',
-    cardFooter: 'Para mais informações acesse o site: {{informationSite}}'
+    cardFooter: 'Para mais informações acesse o site: {{informationSite}}',
   },
   About: {
     cardTitle: 'Sobre nós',
@@ -183,8 +184,8 @@ export const translationPtBr = {
       'Esse site é resultado do meu trabalho e meu desejo de compartilhar informações verdadeiras/corretas sobre o covid-19 para apoiar nossa luta mundial contra ele.',
     line7: 'Se você achou esse site útil, considere fazer uma doação para apoiar meu trabalho!',
     donate: 'Doar',
-    dataSource: 'Fontes de dados'
-  }
+    dataSource: 'Fontes de dados',
+  },
 };
 
 export const translationEs = {
@@ -192,10 +193,10 @@ export const translationEs = {
   Header: {
     subTitle: 'Tiempo real',
     lastUpdate: 'Última actualización',
-    utcTime: 'Hora UTC'
+    utcTime: 'Hora UTC',
   },
   Errors: {
-    errorTitle: 'Error'
+    errorTitle: 'Error',
   },
   Configurations: {
     configurations: 'Configuraciones',
@@ -203,7 +204,7 @@ export const translationEs = {
       'Lapso de tiempo entre actualizaciones del sitio. Encienda el interruptor y elija un momento para actualizar las estadísticas o apague el interruptor para congelar las actualizaciones',
     timeSelect: 'minuto',
     timeSelectPl: 'minutos',
-    timeSelectHour: 'hora'
+    timeSelectHour: 'hora',
   },
   Corona: {
     statisticsTab: 'Estadísticas',
@@ -211,21 +212,21 @@ export const translationEs = {
     aboutTab: 'Sobre',
     tipsTab: 'Consejos',
     messageErrorNews: 'Se ha producido un error en las noticias, contáctanos.',
-    messageErrorStatistics: 'Se ha producido un error en las estadísticas, contáctenos.'
+    messageErrorStatistics: 'Se ha producido un error en las estadísticas, contáctenos.',
   },
   Global: {
     cardTitle: 'Estadísticas Globales',
     confirmed: 'Confirmados',
     infecteds: 'Infectados',
     deaths: 'Muertes',
-    recovered: 'Recuperados'
+    recovered: 'Recuperados',
   },
   Today: {
     cardTitle: 'En todo el mundo',
     information: 'Ocurrencias en las últimas 24 horas.',
     informationCountry: 'El país de hoy con más muertes.',
     deaths: 'Muertes',
-    confirmed: 'Confirmados'
+    confirmed: 'Confirmados',
   },
   TableStats: {
     cardTitle: 'Estadísticas de Países',
@@ -244,10 +245,10 @@ export const translationEs = {
     paginationNext: 'Siguiente',
     paginationOf: 'de',
     paginationRows: 'filas',
-    paginationPage: 'Pagina'
+    paginationPage: 'Pagina',
   },
   News: {
-    publishedAt: ['Publicado en [{{data}}] por {{author}}', 'publicado en [{{data}}]']
+    publishedAt: ['Publicado en [{{data}}] por {{author}}', 'publicado en [{{data}}]'],
   },
   Tips: {
     cardTitle: 'Consejos',
@@ -263,7 +264,7 @@ export const translationEs = {
     list2: 'Dolor o presión persistente en el pecho',
     list3: 'Confusión mental y falta de atención',
     list4: 'Cara o labios pálidos',
-    cardFooter: 'Para obtener más información, acceda a: {{informationSite}}'
+    cardFooter: 'Para obtener más información, acceda a: {{informationSite}}',
   },
   About: {
     cardTitle: 'Sobre nosotros',
@@ -278,8 +279,8 @@ export const translationEs = {
       'Este sitio web es el resultado de mi trabajo y mi deseo de compartir verdadero / correcto información con respecto al covid-19 para apoyar nuestra lucha mundial contra él.',
     line7: 'Si este sitio le resulta útil, considere hacer una donación para apoyar mi trabajo',
     donate: 'Donar',
-    dataSource: 'Fuentes de datos'
-  }
+    dataSource: 'Fuentes de datos',
+  },
 };
 
 export const countriesTranslated = [
@@ -483,5 +484,5 @@ export const countriesTranslated = [
   { originalName: 'Saint Kitts and Nevis', brName: 'São Cristóvão e Nevis', esName: 'San Cristóbal y Nieves' },
   { originalName: 'Papua New Guinea', brName: 'Papua Nova Guiné', esName: 'Papúa Nueva Guinea' },
   { originalName: 'St. Vincent Grenadines', brName: 'São Vicente e Granadinas', esName: 'San Vicente Granadinas' },
-  { originalName: 'Timor-Leste', brName: 'Timor-Leste', esName: 'Timor-Leste' }
+  { originalName: 'Timor-Leste', brName: 'Timor-Leste', esName: 'Timor-Leste' },
 ];
