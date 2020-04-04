@@ -2,18 +2,19 @@ import React from 'react';
 import 'react-table/react-table.css';
 import 'react-table-hoc-fixed-columns/lib/styles.css';
 import { translate } from 'react-translate';
+import { makeNumberThousandSeparator } from '../Utils/Numbers';
 
-import Card from 'react-bootstrap/Card';
+import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import NumberFormat from 'react-number-format';
-import { TableChart, UnfoldMore } from '@material-ui/icons';
+import { TableChart, UnfoldMore, Info } from '@material-ui/icons';
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './TableStats.css';
 
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
-const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry, t }) => (
+const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry, tCountry, t }) => (
   <Card className='table-card-adjust'>
     <Card.Header>
       <h5>
@@ -64,8 +65,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableCases',
-                      Cell: row => <span>{row.original.cases}</span>,
+                      accessor: 'cases',
+                      Cell: row => <span>{makeNumberThousandSeparator(row.original.cases, tCountry)}</span>,
                       className: 'confirmed-table-column',
                       headerClassName: 'confirmed-table-header'
                     },
@@ -75,8 +76,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('last24h')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableNewCases',
-                      Cell: row => <span>+{row.original.new_cases}</span>,
+                      accessor: 'new_cases',
+                      Cell: row => <span>+{makeNumberThousandSeparator(row.original.new_cases, tCountry)}</span>,
                       className: 'confirmed-table-column',
                       headerClassName: 'confirmed-table-header'
                     }
@@ -92,8 +93,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableInfecteds',
-                      Cell: row => <span>{row.original.active_cases}</span>,
+                      accessor: 'active_cases',
+                      Cell: row => <span>{makeNumberThousandSeparator(row.original.active_cases, tCountry)}</span>,
                       className: 'infected-table-column',
                       headerClassName: 'infected-table-header'
                     },
@@ -124,8 +125,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableDeaths',
-                      Cell: row => <span>{row.original.deaths}</span>,
+                      accessor: 'deaths',
+                      Cell: row => <span>{makeNumberThousandSeparator(row.original.deaths, tCountry)}</span>,
                       className: 'deaths-table-column',
                       headerClassName: 'deaths-table-header'
                     },
@@ -135,8 +136,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('last24h')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableNewDeaths',
-                      Cell: row => <span>+{row.original.new_deaths}</span>,
+                      accessor: 'new_deaths',
+                      Cell: row => <span>+{makeNumberThousandSeparator(row.original.new_deaths, tCountry)}</span>,
                       className: 'deaths-table-column',
                       headerClassName: 'deaths-table-header'
                     },
@@ -167,8 +168,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableRecovered',
-                      Cell: row => <span>{row.original.total_recovered}</span>,
+                      accessor: 'total_recovered',
+                      Cell: row => <span>{makeNumberThousandSeparator(row.original.total_recovered, tCountry)}</span>,
                       className: 'recovered-table-column',
                       headerClassName: 'recovered-table-header'
                     },
@@ -190,7 +191,19 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                   ]
                 },
                 {
-                  Header: t('critical'),
+                  Header: (
+                    <span>
+                      <OverlayTrigger
+                        key='left'
+                        placement='left'
+                        overlay={<Tooltip id='tooltipid'>{t('infoCritical')}</Tooltip>}
+                      >
+                        <span>
+                          {t('critical')} <Info style={{ fontSize: '16px' }} />
+                        </span>
+                      </OverlayTrigger>
+                    </span>
+                  ),
                   headerClassName: 'critical-table-header',
                   columns: [
                     {
@@ -199,8 +212,8 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                           {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                         </span>
                       ),
-                      accessor: 'tableCritical',
-                      Cell: row => <span>{row.original.serious_critical}</span>,
+                      accessor: 'serious_critical',
+                      Cell: row => <span>{makeNumberThousandSeparator(row.original.serious_critical, tCountry)}</span>,
                       className: 'critical-table-column',
                       headerClassName: 'critical-table-header'
                     }

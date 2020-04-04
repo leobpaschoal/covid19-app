@@ -2,12 +2,13 @@ import React from 'react';
 import { Card, CardGroup } from 'react-bootstrap';
 import { translate } from 'react-translate';
 import { Warning, Schedule } from '@material-ui/icons';
+import { makeNumberThousandSeparator } from '../Utils/Numbers';
 
 import SpinnerLoad from '../Load/SpinnerLoad';
 import './Global.css';
 
-const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadingAllCases, t }) => {
-  const handleLoadingGlobal = (name, value) => (
+const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadingAllCases, tCountry, t }) => {
+  const handleLoadingGlobal = (name, value, language) => (
     <SpinnerLoad
       element={
         <div>
@@ -15,7 +16,7 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
             <span>{name}</span>
           </div>
           <div>
-            <span>{value}</span>
+            <span>{makeNumberThousandSeparator(value, language)}</span>
           </div>
         </div>
       }
@@ -27,7 +28,7 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
     />
   );
 
-  const handleLoadingAllCases = (name, value) => (
+  const handleLoadingAllCases = (name, value, language) => (
     <SpinnerLoad
       element={
         <div>
@@ -35,7 +36,7 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
             <span>{name}</span>
           </div>
           <div>
-            <span>{value}</span>
+            <span>{makeNumberThousandSeparator(value, language)}</span>
           </div>
         </div>
       }
@@ -61,13 +62,13 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
           <div className='adjust-circles'>
             <div>
               <div className='sonar-emitter confirmed-bg'>
-                {handleLoadingGlobal(t('confirmed'), '+' + newCases)}
+                {handleLoadingGlobal(t('confirmed'), '+' + newCases, tCountry)}
                 <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingGlobal(t('deaths'), '+' + newDeaths)}
+                {handleLoadingGlobal(t('deaths'), '+' + newDeaths, tCountry)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>
@@ -97,13 +98,13 @@ const Today = ({ newCases, newDeaths, dayOccurrences, loadingGlobalStats, loadin
           <div className='adjust-circles'>
             <div>
               <div className='sonar-emitter confirmed-bg'>
-                {handleLoadingAllCases(t('confirmed'), '+' + dayOccurrences.new_cases)}
+                {handleLoadingAllCases(t('confirmed'), '+' + dayOccurrences.new_cases, tCountry)}
                 <div className='sonar-wave confirmed-bg'></div>
               </div>
             </div>
             <div>
               <div className='sonar-emitter deaths-bg'>
-                {handleLoadingAllCases(t('deaths'), '+' + dayOccurrences.new_deaths)}
+                {handleLoadingAllCases(t('deaths'), '+' + dayOccurrences.new_deaths, tCountry)}
                 <div className='sonar-wave deaths-bg'></div>
               </div>
             </div>

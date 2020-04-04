@@ -72,12 +72,15 @@ class Corona extends Component {
       .then(response => {
         if (response.statusText === 'OK') {
           const res = response.data;
-          const totalCases = replaceStringToNumber(res.total_cases);
-          const totalRecovered = replaceStringToNumber(res.total_recovered);
-          const totalDeaths = replaceStringToNumber(res.total_deaths);
+          res.new_cases = replaceStringToNumber(res.new_cases);
+          res.new_deaths = replaceStringToNumber(res.new_deaths);
 
-          res.infected = totalCases - (totalRecovered + totalDeaths);
-          res.percentInfected = calcPercent(res.infected, res.total_cases);
+          res.total_cases = replaceStringToNumber(res.total_cases);
+          res.total_recovered = replaceStringToNumber(res.total_recovered);
+          res.total_deaths = replaceStringToNumber(res.total_deaths);
+          res.total_infected = res.total_cases - (res.total_recovered + res.total_deaths);
+
+          res.percentInfected = calcPercent(res.total_infected, res.total_cases);
           res.percentDeaths = calcPercent(res.total_deaths, res.total_cases);
           res.percentRecovered = calcPercent(res.total_recovered, res.total_cases);
 
@@ -117,13 +120,13 @@ class Corona extends Component {
             return {
               ...cbc,
               country_name: chosenCountry,
-              tableCases: replaceStringToNumber(cbc.cases),
-              tableNewCases: replaceStringToNumber(cbc.new_cases),
-              tableDeaths: replaceStringToNumber(cbc.deaths),
-              tableNewDeaths: replaceStringToNumber(cbc.new_deaths),
-              tableInfecteds: replaceStringToNumber(cbc.active_cases),
-              tableRecovered: replaceStringToNumber(cbc.total_recovered),
-              tableCritical: replaceStringToNumber(cbc.serious_critical),
+              cases: replaceStringToNumber(cbc.cases),
+              new_cases: replaceStringToNumber(cbc.new_cases),
+              deaths: replaceStringToNumber(cbc.deaths),
+              new_deaths: replaceStringToNumber(cbc.new_deaths),
+              active_cases: replaceStringToNumber(cbc.active_cases),
+              total_recovered: replaceStringToNumber(cbc.total_recovered),
+              serious_critical: replaceStringToNumber(cbc.serious_critical),
               tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
               tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases)
@@ -137,11 +140,11 @@ class Corona extends Component {
 
           const maxValue = Math.max.apply(
             Math,
-            dataCountriesStatsPrepared.map(cs => replaceStringToNumber(cs.new_deaths))
+            dataCountriesStatsPrepared.map(cs => cs.new_deaths)
           );
 
           this.setState({
-            dayOccurrences: dataCountriesStatsPrepared.find(dcs => replaceStringToNumber(dcs.new_deaths) === maxValue)
+            dayOccurrences: dataCountriesStatsPrepared.find(dcs => dcs.new_deaths === maxValue)
           });
         } else {
           this.handleError(this.props.t('messageErrorStatistics'));
@@ -264,19 +267,25 @@ class Corona extends Component {
                 </span>
               }
             >
-              <Global globalStats={globalStats} loadingGlobalStats={loadingGlobalStats} />
+              <Global
+                globalStats={globalStats}
+                loadingGlobalStats={loadingGlobalStats}
+                tCountry={this.props.tCountry}
+              />
               <Today
                 loadingGlobalStats={loadingGlobalStats}
                 loadingAllCases={loadingAllCases}
                 dayOccurrences={dayOccurrences}
                 newCases={globalStats.new_cases}
                 newDeaths={globalStats.new_deaths}
+                tCountry={this.props.tCountry}
               />
               <TableStats
                 data={filteredCountries}
                 loadingAllCases={loadingAllCases}
                 inputSearchCountry={inputSearchCountry}
                 filterByCountry={this.filterByCountry}
+                tCountry={this.props.tCountry}
               />
             </Tab>
             <Tab

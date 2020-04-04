@@ -47,14 +47,14 @@ export const translationEn = {
     deaths: 'Deaths',
     recovered: 'Recovered',
     critical: 'Critical',
+    infoCritical: 'People in a critical state of health',
     total: 'Total',
     last24h: 'Last 24h',
     percent: 'Percent',
     paginationPrevious: 'Previous',
     paginationNext: 'Next',
     paginationOf: 'of',
-    paginationRows: 'rows',
-    paginationPage: 'Page'
+    paginationRows: 'rows'
   },
   News: {
     publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]']
@@ -142,6 +142,7 @@ export const translationPtBr = {
     deaths: 'Mortes',
     recovered: 'Recuperados',
     critical: 'Crítico',
+    infoCritical: 'Pessoas em estado crítico de saúde',
     total: 'Total',
     last24h: 'Últimas 24h',
     percent: 'Porcentagem',
@@ -235,6 +236,7 @@ export const translationEs = {
     deaths: 'Muertes',
     recovered: 'Recuperados',
     critical: 'Critico',
+    infoCritical: 'Personas gravemente enfermas',
     total: 'Total',
     last24h: 'Últimas 24h',
     percent: 'Por ciento',

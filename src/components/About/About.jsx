@@ -19,8 +19,8 @@ const About = ({ t }) => (
         <p>{t('line7')}</p>
         <div>
           <a
-            target='_blank'
             href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QH2C9XXN4QBCE&source=url'
+            target='_blank'
             rel='noopener noreferrer'
           >
             <div>
@@ -33,7 +33,9 @@ const About = ({ t }) => (
         </div>
         <hr />
         <div className='picpay-donate'>
-          <img className='picpay-image' src='./pay/picpay.jpg' alt='Picpay' />
+          <a href='https://picpay.me/leobpaschoal' target='_blank' rel='noopener noreferrer'>
+            <img className='picpay-image' src='./pay/picpay.jpg' alt='Picpay' />
+          </a>
         </div>
         <p>
           <br />
