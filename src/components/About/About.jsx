@@ -44,7 +44,7 @@ const About = ({ t }) => (
           <span style={{ fontSize: '14px' }}>WHO, CDC, ECDC, NHC, JHU CSSE, DXY QQ & NEWSAPI.ORG</span>
         </p>
         <p>
-          <b>e-mail:</b> covid19realtime@gmail.com
+          <b>e-mail:</b> contact@covid19realtime.info
         </p>
       </Card.Body>
     </Card>
