@@ -9,6 +9,7 @@ import Configurations from '../Stats/Configurations';
 import Global from './Global';
 import Today from './Today';
 import TableStats from './TableStats';
+import Graphic from '../Graphics/Graphic';
 import News from '../News/News';
 import Tips from '../Tips/Tips';
 import About from '../About/About';
@@ -21,7 +22,7 @@ import {
   TrendingUpOutlined,
   Language,
   EmojiObjectsOutlined,
-  Settings
+  Settings,
 } from '@material-ui/icons';
 
 import { Container, Tabs, Tab } from 'react-bootstrap';
@@ -42,7 +43,7 @@ class Corona extends Component {
     keyTab: 'global',
     inputSearchCountry: '',
     showError: false,
-    messageError: ''
+    messageError: '',
   };
 
   componentDidMount = () => {
@@ -50,7 +51,7 @@ class Corona extends Component {
     this.getNews();
   };
 
-  UNSAFE_componentWillReceiveProps = async nextProps => {
+  UNSAFE_componentWillReceiveProps = async (nextProps) => {
     this.setState({ loadingGlobalStats: true, loadingAllCases: true });
     await this.getGlobalStats();
     await this.getAllCases();
@@ -69,7 +70,7 @@ class Corona extends Component {
   getGlobalStats = async () => {
     await monitor()
       .get('/worldstat.php')
-      .then(response => {
+      .then((response) => {
         if (response.statusText === 'OK') {
           const res = response.data;
           res.new_cases = replaceStringToNumber(res.new_cases);
@@ -89,7 +90,7 @@ class Corona extends Component {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
-      .catch(e => {
+      .catch((e) => {
         this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
@@ -97,14 +98,14 @@ class Corona extends Component {
   getAllCases = async () => {
     await monitor()
       .get('/cases_by_country.php')
-      .then(response => {
+      .then((response) => {
         if (response.statusText === 'OK') {
           const dataCountriesStats = response.data.countries_stat.sort(
             (a, b) => replaceStringToNumber(b.cases) - replaceStringToNumber(a.cases)
           );
 
-          const dataCountriesStatsPrepared = dataCountriesStats.map(cbc => {
-            const objCountryFind = countriesTranslated.find(ct => ct.originalName === cbc.country_name);
+          const dataCountriesStatsPrepared = dataCountriesStats.map((cbc) => {
+            const objCountryFind = countriesTranslated.find((ct) => ct.originalName === cbc.country_name);
             let chosenCountry = cbc.country_name; // Default api
 
             if (objCountryFind) {
@@ -129,33 +130,33 @@ class Corona extends Component {
               serious_critical: replaceStringToNumber(cbc.serious_critical),
               tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
-              tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases)
+              tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases),
             };
           });
 
           this.setState({
             countriesStats: dataCountriesStatsPrepared,
-            filteredCountries: dataCountriesStatsPrepared
+            filteredCountries: dataCountriesStatsPrepared,
           });
 
           const maxValue = Math.max.apply(
             Math,
-            dataCountriesStatsPrepared.map(cs => cs.new_deaths)
+            dataCountriesStatsPrepared.map((cs) => cs.new_deaths)
           );
 
           this.setState({
-            dayOccurrences: dataCountriesStatsPrepared.find(dcs => dcs.new_deaths === maxValue)
+            dayOccurrences: dataCountriesStatsPrepared.find((dcs) => dcs.new_deaths === maxValue),
           });
         } else {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
-      .catch(e => {
+      .catch((e) => {
         this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
 
-  getNews = async nextCountryProps => {
+  getNews = async (nextCountryProps) => {
     this.setState({ loadingNews: true });
 
     let country = 'us';
@@ -173,7 +174,7 @@ class Corona extends Component {
 
     await news()
       .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
-      .then(response => {
+      .then((response) => {
         const res = response.data;
         if (res.status === 'ok') {
           this.setState({ news: res.articles });
@@ -182,7 +183,7 @@ class Corona extends Component {
         }
         this.setState({ loadingNews: false });
       })
-      .catch(e => {
+      .catch((e) => {
         this.handleError(this.props.t('messageErrorNews'));
       });
   };
@@ -193,7 +194,7 @@ class Corona extends Component {
       this.setState({
         manageTimeout: setTimeout(() => {
           this.getSyncAll(true, time);
-        }, time)
+        }, time),
       });
     }
   };
@@ -208,27 +209,27 @@ class Corona extends Component {
     }
   };
 
-  handleChangeRefreshTime = value => {
+  handleChangeRefreshTime = (value) => {
     this.setState({ refreshTime: value });
     if (this.state.refreshIsChecked) {
       this.handleManageTimeout(true, value);
     }
   };
 
-  handleError = msg => {
+  handleError = (msg) => {
     this.setState({ showError: !this.state.showError, messageError: msg });
   };
 
-  filterByCountry = value => {
+  filterByCountry = (value) => {
     this.setState({
       inputSearchCountry: value,
       filteredCountries: this.state.countriesStats.filter(
-        country => country.country_name.toLowerCase().indexOf(value.toLowerCase()) !== -1
-      )
+        (country) => country.country_name.toLowerCase().indexOf(value.toLowerCase()) !== -1
+      ),
     });
   };
 
-  setKeyTab = key => {
+  setKeyTab = (key) => {
     this.setState({ keyTab: key });
   };
 
@@ -245,7 +246,7 @@ class Corona extends Component {
       news,
       inputSearchCountry,
       showError,
-      messageError
+      messageError,
     } = this.state;
 
     return (
@@ -258,7 +259,7 @@ class Corona extends Component {
           tCountry={this.props.tCountry}
         />
         <Container>
-          <Tabs activeKey={keyTab} onSelect={k => this.setKeyTab(k)}>
+          <Tabs activeKey={keyTab} onSelect={(k) => this.setKeyTab(k)}>
             <Tab
               eventKey='global'
               title={
@@ -280,6 +281,7 @@ class Corona extends Component {
                 newDeaths={globalStats.new_deaths}
                 tCountry={this.props.tCountry}
               />
+              <Graphic />
               <TableStats
                 data={filteredCountries}
                 loadingAllCases={loadingAllCases}
