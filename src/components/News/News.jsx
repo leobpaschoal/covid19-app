@@ -21,7 +21,7 @@ const News = ({ news, isDateFormatted, t }) => (
                 <img
                   alt={''}
                   src={n.urlToImage ? n.urlToImage : ''}
-                  onError={e => {
+                  onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = './noImage.png';
                     e.target.width = 100;
@@ -42,21 +42,21 @@ const News = ({ news, isDateFormatted, t }) => (
                   data: (
                     <em>
                       {isDateFormatted
-                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:MM')
-                        : moment(n.publishedAt).format('YYYY-MM-DD HH:MM')}
+                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:mm')
+                        : moment(n.publishedAt).format('YYYY-MM-DD HH:mm')}
                     </em>
                   ),
-                  author: n.author
+                  author: n.author,
                 })
               : t('publishedAt', {
                   n: 2,
                   data: (
                     <em>
                       {isDateFormatted
-                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:MM')
-                        : moment(n.publishedAt).format('YYYY-MM-DD HH:MM')}
+                        ? moment(n.publishedAt).format('DD/MM/YYYY HH:mm')
+                        : moment(n.publishedAt).format('YYYY-MM-DD HH:mm')}
                     </em>
-                  )
+                  ),
                 })}
           </div>
         </Card.Footer>
