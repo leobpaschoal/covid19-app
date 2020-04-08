@@ -281,7 +281,7 @@ class Corona extends Component {
                 newDeaths={globalStats.new_deaths}
                 tCountry={this.props.tCountry}
               />
-              <Graphic dayOccurrences={dayOccurrences} tCountry={this.props.tCountry} />
+              <Graphic tCountry={this.props.tCountry} />
               <TableStats
                 data={filteredCountries}
                 loadingAllCases={loadingAllCases}

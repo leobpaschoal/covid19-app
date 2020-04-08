@@ -1,0 +1,31 @@
+.graphic-card-content {
+  margin-top: 20px;
+}
+
+.graphic-card-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.graphic-card-body {
+  font-size: 12px;
+  padding: 10px 0 0 0;
+}
+
+.graphic-icon-title {
+  margin-top: -3px;
+}
+
+.graphic-select-country {
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 16px;
+  height: 40px;
+  background-color: white;
+  margin-left: 60px;
+}
+
+.graphic-icon-toggle {
+  font-size: 32px !important;
+}
