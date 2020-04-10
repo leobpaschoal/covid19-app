@@ -43,150 +43,17 @@
   font-size: 32px !important;
 }
 
-.select-search {
-  width: 250px;
-  position: relative;
-  box-sizing: border-box;
-  display: inline-block;
+.graphic-continents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.select-search *,
-.select-search *::after,
-.select-search *::before {
-  box-sizing: inherit;
+.graphic-continents > div {
+  margin-right: 5px;
 }
 
-.select-search.is-disabled {
-  opacity: 0.5;
-}
-
-.select-search__value {
-  position: relative;
-}
-
-.select-search__value::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top: calc(50% - 9px);
-  right: 19px;
-  width: 11px;
-  height: 11px;
-  transform: rotate(45deg);
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  pointer-events: none;
-}
-
-.select-search__input {
-  display: block;
-  height: 36px;
-  width: 100%;
-  padding: 0 16px;
-  background: #fff;
-  border: 1px solid lightgray;
-  box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
-  border-radius: 3px;
-  outline: none;
-  font-size: 14px;
-  text-align: left;
-  line-height: 36px;
-  -webkit-appearance: none;
-}
-
-.select-search:not(.is-disabled) .select-search__input {
-  cursor: pointer;
-}
-
-.select-search--multiple .select-search__input {
-  cursor: initial;
-}
-
-.select-search__input::-webkit-search-decoration,
-.select-search__input::-webkit-search-cancel-button,
-.select-search__input::-webkit-search-results-button,
-.select-search__input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-}
-
-.select-search--multiple .select-search__input {
-  border-radius: 3px 3px 0 0;
-}
-
-.select-search__input:hover {
-  border-color: #3b79b7;
-}
-
-.select-search__select {
-  background: #fff;
-  box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
-}
-
-.select-search:not(.select-search--multiple) .select-search__select {
-  position: absolute;
-  z-index: 2;
-  top: 44px;
-  right: 0;
-  left: 0;
-  border-radius: 3px;
-  overflow: auto;
-  max-height: 360px;
-}
-
-.select-search--multiple .select-search__select {
-  height: 180px;
-  overflow: auto;
-  border-top: 1px solid #eee;
-  border-radius: 0 0 3px 3px;
-}
-
-.select-search__options {
-  list-style: none;
-  padding: 0 0 0 0;
-}
-
-.select-search__row:not(:first-child) {
-  border-top: 1px solid #eee;
-}
-
-.select-search__option {
-  display: block;
+.graphic-continents img {
+  width: 30px;
   height: 30px;
-  width: 100%;
-  background: #fff;
-  border: none;
-  outline: none;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.select-search--multiple .select-search__option {
-  height: 48px;
-}
-
-.select-search__option.is-selected {
-  background: #4c97e2;
-  color: #fff;
-}
-
-.select-search__option.is-highlighted,
-.select-search__option:not(.is-selected):hover {
-  background: rgba(47, 120, 204, 0.1);
-}
-
-.select-search__option.is-highlighted.is-selected,
-.select-search__option.is-selected:hover {
-  background: #30679e;
-  color: #fff;
-}
-
-.select-search__group-header {
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: bold;
-  background: #212121;
-  padding: 8px 16px;
-  color: white;
 }

@@ -36,7 +36,6 @@ class Corona extends Component {
     news: [],
     loadingGlobalStats: true,
     loadingAllCases: true,
-    loadingNews: true,
     manageTimeout: null,
     refreshTime: 60000 * 10,
     refreshIsChecked: true,
@@ -157,8 +156,6 @@ class Corona extends Component {
   };
 
   getNews = async (nextCountryProps) => {
-    this.setState({ loadingNews: true });
-
     let country = 'us';
     let type = 'coronavirus';
 
@@ -181,7 +178,6 @@ class Corona extends Component {
         } else {
           this.handleError(this.props.t('messageErrorNews'));
         }
-        this.setState({ loadingNews: false });
       })
       .catch((e) => {
         this.handleError(this.props.t('messageErrorNews'));
@@ -281,7 +277,7 @@ class Corona extends Component {
                 newDeaths={globalStats.new_deaths}
                 tCountry={this.props.tCountry}
               />
-              <Graphic tCountry={this.props.tCountry} />
+              <Graphic tCountry={this.props.tCountry} handleError={this.handleError} />
               <TableStats
                 data={filteredCountries}
                 loadingAllCases={loadingAllCases}
