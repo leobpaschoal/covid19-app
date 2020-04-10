@@ -24,7 +24,7 @@ const About = ({ t }) => (
             rel='noopener noreferrer'
           >
             <div>
-              <img className='paypal-images' src='./pay/paypal.png' alt='Paypal' />
+              <img className='paypal-image' src='https://covid19realtime.info/pay/paypal.png' alt='Paypal' />
             </div>
             <div>
               <button className='paypal-button'>{t('donate')}</button>
@@ -34,7 +34,12 @@ const About = ({ t }) => (
         <hr />
         <div className='picpay-donate'>
           <a href='https://picpay.me/leobpaschoal' target='_blank' rel='noopener noreferrer'>
-            <img className='picpay-image' src='./pay/picpay.jpg' alt='Picpay' />
+            <div>
+              <img className='picpay-image' src='https://covid19realtime.info/pay/picpay.jpg' alt='Picpay' />
+            </div>
+            <div>
+              <button className='picpay-button'>{t('donate')}</button>
+            </div>
           </a>
         </div>
         <p>

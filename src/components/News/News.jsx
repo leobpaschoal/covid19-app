@@ -9,7 +9,7 @@ const News = ({ news, isDateFormatted, t }) => (
   <div>
     {news.map((n, key) => (
       <Card key={key} className='news-card'>
-        <a target='_blank' href={n.url} rel='noopener noreferrer'>
+        <a target='_blank' href={n.url ? n.url.replace('http:', 'https:') : '#'} rel='noopener noreferrer'>
           <Card.Header>
             <h5>
               <Badge variant='secondary'>[{n.source.name}]</Badge> {n.title} <OpenInNew />
@@ -20,10 +20,10 @@ const News = ({ news, isDateFormatted, t }) => (
               <div>
                 <img
                   alt={''}
-                  src={n.urlToImage ? n.urlToImage : ''}
+                  src={n.urlToImage ? n.urlToImage.replace('http:', 'https:') : ''}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = './noImage.png';
+                    e.target.src = 'https://covid19realtime.info/noImage.png';
                     e.target.width = 100;
                   }}
                 />

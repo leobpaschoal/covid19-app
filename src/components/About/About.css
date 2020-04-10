@@ -4,11 +4,12 @@
   text-align: center;
 }
 
-.paypal-images {
+.paypal-image {
   width: 150px;
 }
 
-.paypal-button {
+.paypal-button,
+.picpay-button {
   width: 100px;
   height: 20px;
   border-radius: 10px;
@@ -18,7 +19,14 @@
   margin-top: 10px;
   color: white;
   border: 0;
+}
+
+.paypal-button {
   background-color: #003687;
+}
+
+.picpay-button {
+  background-color: #059945;
 }
 
 .picpay-donate {
@@ -26,7 +34,9 @@
 }
 
 .picpay-image {
-  width: 160px;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
 }
 
 .paypal-button:hover {

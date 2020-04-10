@@ -12,9 +12,7 @@ const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, tCountry, t
     tCountry === 'br' ? moment(lastUpdated).format('DD/MM/YYYY HH:mm') : moment(lastUpdated).format('YYYY-MM-DD HH:mm');
 
   const stillUtc = moment.utc(lastUpdated).toDate();
-  const local = moment(stillUtc)
-    .local()
-    .format('YYYY-MM-DD HH:mm:ss');
+  const local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
 
   const dateFormatted =
     tCountry === 'br'
@@ -23,13 +21,13 @@ const Header = ({ lastUpdated, loadingGlobalStats, refreshIsChecked, tCountry, t
 
   switch (tCountry) {
     case 'br':
-      flag = './flags/brazil.gif';
+      flag = 'https://covid19realtime.info/flags/brazil.gif';
       break;
     case 'en':
-      flag = './flags/usa.gif';
+      flag = 'https://covid19realtime.info/flags/usa.gif';
       break;
     case 'es':
-      flag = './flags/spain.gif';
+      flag = 'https://covid19realtime.info/flags/spain.gif';
       break;
     default:
       break;

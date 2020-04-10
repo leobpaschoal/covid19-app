@@ -16,7 +16,7 @@ const Translate = () => (
           <div>
             <Link to='/'>
               <div>
-                <img alt='' width={80} height={50} src='./flags/usa.gif' />
+                <img alt='' width={80} height={50} src='https://covid19realtime.info/flags/usa.gif' />
               </div>
               <div>English</div>
             </Link>
@@ -24,7 +24,7 @@ const Translate = () => (
           <div>
             <Link to='/pt-br'>
               <div>
-                <img alt='' width={80} height={50} src='./flags/brazil.gif' />
+                <img alt='' width={80} height={50} src='https://covid19realtime.info/flags/brazil.gif' />
               </div>
               <div>Português</div>
             </Link>
@@ -32,7 +32,7 @@ const Translate = () => (
           <div>
             <Link to='/es'>
               <div>
-                <img alt='' width={80} height={50} src='./flags/spain.gif' />
+                <img alt='' width={80} height={50} src='https://covid19realtime.info/flags/spain.gif' />
               </div>
               <div>Español</div>
             </Link>
