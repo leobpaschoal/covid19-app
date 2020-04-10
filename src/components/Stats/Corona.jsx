@@ -23,6 +23,7 @@ import {
   Language,
   EmojiObjectsOutlined,
   Settings,
+  Autorenew,
 } from '@material-ui/icons';
 
 import { Container, Tabs, Tab } from 'react-bootstrap';
@@ -36,6 +37,7 @@ class Corona extends Component {
     news: [],
     loadingGlobalStats: true,
     loadingAllCases: true,
+    loadingNews: true,
     manageTimeout: null,
     refreshTime: 60000 * 10,
     refreshIsChecked: true,
@@ -51,7 +53,7 @@ class Corona extends Component {
   };
 
   UNSAFE_componentWillReceiveProps = async (nextProps) => {
-    this.setState({ loadingGlobalStats: true, loadingAllCases: true });
+    this.setState({ loadingGlobalStats: true, loadingAllCases: true, loadingNews: true });
     await this.getGlobalStats();
     await this.getAllCases();
     this.setState({ loadingGlobalStats: false, loadingAllCases: false });
@@ -89,7 +91,7 @@ class Corona extends Component {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
-      .catch((e) => {
+      .catch(() => {
         this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
@@ -150,7 +152,7 @@ class Corona extends Component {
           this.handleError(this.props.t('messageErrorStatistics'));
         }
       })
-      .catch((e) => {
+      .catch(() => {
         this.handleError(this.props.t('messageErrorStatistics'));
       });
   };
@@ -181,9 +183,10 @@ class Corona extends Component {
           this.handleError(this.props.t('messageErrorNews'));
         }
       })
-      .catch((e) => {
+      .catch(() => {
         this.handleError(this.props.t('messageErrorNews'));
       });
+    this.setState({ loadingNews: false });
   };
 
   handleManageTimeout = (run, time) => {
@@ -238,6 +241,7 @@ class Corona extends Component {
       dayOccurrences,
       loadingGlobalStats,
       loadingAllCases,
+      loadingNews,
       refreshIsChecked,
       refreshTime,
       keyTab,
@@ -289,10 +293,12 @@ class Corona extends Component {
               />
             </Tab>
             <Tab
+              disabled={loadingNews}
               eventKey='news'
               title={
                 <span>
-                  {this.props.t('newsTab')} <DescriptionOutlined />
+                  {this.props.t('newsTab')}{' '}
+                  {loadingNews ? <Autorenew className='corona-news-spin' /> : <DescriptionOutlined />}
                 </span>
               }
             >
