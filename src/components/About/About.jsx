@@ -35,7 +35,7 @@ const About = ({ t }) => (
         <div className='picpay-donate'>
           <a href='https://picpay.me/leobpaschoal' target='_blank' rel='noopener noreferrer'>
             <div>
-              <img className='picpay-image' src='https://covid19realtime.info/pay/picpay.jpg' alt='Picpay' />
+              <img className='picpay-image' src='https://covid19realtime.info/pay/picpay.png' alt='Picpay' />
             </div>
             <div>
               <button className='picpay-button'>{t('donate')}</button>
