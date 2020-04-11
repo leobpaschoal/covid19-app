@@ -35,7 +35,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                     <input
                       className='input-search-country'
                       value={inputSearchCountry}
-                      onChange={e => filterByCountry(e.target.value)}
+                      onChange={(e) => filterByCountry(e.target.value)}
                       placeholder={t('inputSearchCountry')}
                     />
                   ),
@@ -51,9 +51,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                       id: 'countryName',
                       accessor: 'country_name',
                       className: 'country-table-column',
-                      headerClassName: 'country-table-header'
-                    }
-                  ]
+                      headerClassName: 'country-table-header',
+                    },
+                  ],
                 },
                 {
                   Header: t('confirmed'),
@@ -66,9 +66,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'cases',
-                      Cell: row => <span>{makeNumberThousandSeparator(row.original.cases, tCountry)}</span>,
+                      Cell: (row) => <span>{makeNumberThousandSeparator(row.original.cases, tCountry)}</span>,
                       className: 'confirmed-table-column',
-                      headerClassName: 'confirmed-table-header'
+                      headerClassName: 'confirmed-table-header',
                     },
                     {
                       Header: (
@@ -77,11 +77,11 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'new_cases',
-                      Cell: row => <span>+{makeNumberThousandSeparator(row.original.new_cases, tCountry)}</span>,
+                      Cell: (row) => <span>+{makeNumberThousandSeparator(row.original.new_cases, tCountry)}</span>,
                       className: 'confirmed-table-column',
-                      headerClassName: 'confirmed-table-header'
-                    }
-                  ]
+                      headerClassName: 'confirmed-table-header',
+                    },
+                  ],
                 },
                 {
                   Header: t('infecteds'),
@@ -94,14 +94,14 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'active_cases',
-                      Cell: row => <span>{makeNumberThousandSeparator(row.original.active_cases, tCountry)}</span>,
+                      Cell: (row) => <span>{makeNumberThousandSeparator(row.original.active_cases, tCountry)}</span>,
                       className: 'infected-table-column',
-                      headerClassName: 'infected-table-header'
+                      headerClassName: 'infected-table-header',
                     },
                     {
                       Header: t('percent'),
                       acessor: 'tablePercentInfecteds',
-                      Cell: row => (
+                      Cell: (row) => (
                         <NumberFormat
                           decimalScale={2}
                           displayType={'text'}
@@ -111,9 +111,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                       ),
                       className: 'infected-table-column',
                       headerClassName: 'infected-table-header',
-                      sortable: false
-                    }
-                  ]
+                      sortable: false,
+                    },
+                  ],
                 },
                 {
                   Header: t('deaths'),
@@ -126,9 +126,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'deaths',
-                      Cell: row => <span>{makeNumberThousandSeparator(row.original.deaths, tCountry)}</span>,
+                      Cell: (row) => <span>{makeNumberThousandSeparator(row.original.deaths, tCountry)}</span>,
                       className: 'deaths-table-column',
-                      headerClassName: 'deaths-table-header'
+                      headerClassName: 'deaths-table-header',
                     },
                     {
                       Header: (
@@ -137,14 +137,14 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'new_deaths',
-                      Cell: row => <span>+{makeNumberThousandSeparator(row.original.new_deaths, tCountry)}</span>,
+                      Cell: (row) => <span>+{makeNumberThousandSeparator(row.original.new_deaths, tCountry)}</span>,
                       className: 'deaths-table-column',
-                      headerClassName: 'deaths-table-header'
+                      headerClassName: 'deaths-table-header',
                     },
                     {
                       Header: t('percent'),
                       acessor: 'tablePercentDeaths',
-                      Cell: row => (
+                      Cell: (row) => (
                         <NumberFormat
                           decimalScale={2}
                           displayType={'text'}
@@ -154,9 +154,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                       ),
                       className: 'deaths-table-column',
                       headerClassName: 'deaths-table-header',
-                      sortable: false
-                    }
-                  ]
+                      sortable: false,
+                    },
+                  ],
                 },
                 {
                   Header: t('recovered'),
@@ -169,14 +169,14 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'total_recovered',
-                      Cell: row => <span>{makeNumberThousandSeparator(row.original.total_recovered, tCountry)}</span>,
+                      Cell: (row) => <span>{makeNumberThousandSeparator(row.original.total_recovered, tCountry)}</span>,
                       className: 'recovered-table-column',
-                      headerClassName: 'recovered-table-header'
+                      headerClassName: 'recovered-table-header',
                     },
                     {
                       Header: t('percent'),
                       acessor: 'tablePercentRecovered',
-                      Cell: row => (
+                      Cell: (row) => (
                         <NumberFormat
                           decimalScale={2}
                           displayType={'text'}
@@ -186,9 +186,9 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                       ),
                       className: 'recovered-table-column',
                       headerClassName: 'recovered-table-header',
-                      sortable: false
-                    }
-                  ]
+                      sortable: false,
+                    },
+                  ],
                 },
                 {
                   Header: (
@@ -213,12 +213,14 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
                         </span>
                       ),
                       accessor: 'serious_critical',
-                      Cell: row => <span>{makeNumberThousandSeparator(row.original.serious_critical, tCountry)}</span>,
+                      Cell: (row) => (
+                        <span>{makeNumberThousandSeparator(row.original.serious_critical, tCountry)}</span>
+                      ),
                       className: 'critical-table-column',
-                      headerClassName: 'critical-table-header'
-                    }
-                  ]
-                }
+                      headerClassName: 'critical-table-header',
+                    },
+                  ],
+                },
               ]}
               defaultPageSize={25}
               pageSizeOptions={[25, 50, 100]}
@@ -229,6 +231,7 @@ const TableStats = ({ data, loadingAllCases, filterByCountry, inputSearchCountry
               rowsText={t('paginationRows')}
               pageText={t('paginationPage')}
               ofText={t('paginationOf')}
+              noDataText={t('noRowsFound')}
             />
           }
           circle

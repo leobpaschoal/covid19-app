@@ -121,7 +121,7 @@ class Corona extends Component {
 
             return {
               ...cbc,
-              country_name: chosenCountry,
+              country_name: chosenCountry !== '' ? chosenCountry : 'Unknown',
               cases: replaceStringToNumber(cbc.cases),
               new_cases: replaceStringToNumber(cbc.new_cases),
               deaths: replaceStringToNumber(cbc.deaths),
