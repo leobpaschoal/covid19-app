@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { monitor } from '../../client';
+import GraphicNew from './GraphicNew';
+
 import moment from 'moment';
 import { translate } from 'react-translate';
 import { Timeline, UnfoldMore } from '@material-ui/icons';
 import { replaceStringToNumber } from '../Utils/Numbers';
-import { XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area, Legend, Label, ResponsiveContainer } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area, Legend, ResponsiveContainer } from 'recharts';
 import { Card, Accordion } from 'react-bootstrap';
 import { countriesTranslated } from '../Utils/Utils';
 import SpinnerLoad from '../Load/SpinnerLoad';
@@ -16,6 +18,7 @@ import './Graphic.css';
 class Graphic extends Component {
   state = {
     casesByParticularCountry: [],
+    casesByParticularCountryNew: [],
     loadingCasesByParticularCountry: false,
     countrySelected: '',
     flag: '',
@@ -33,15 +36,25 @@ class Graphic extends Component {
             const stats = response.data.stat_by_country;
             const filteredStats = stats.filter((stat) => moment(stat.record_date).format('HH:mm') === '23:50');
             filteredStats.push(stats.pop());
-            const dataChart = filteredStats.map((fs) => ({
+
+            const casesByParticularCountryData = filteredStats.map((fs) => ({
               name: this.setTranslateDate(moment(fs.record_date)),
               Confirmed: fs.total_cases ? replaceStringToNumber(fs.total_cases) : 0,
               Infected: fs.active_cases ? replaceStringToNumber(fs.active_cases) : 0,
               Deaths: fs.total_deaths ? replaceStringToNumber(fs.total_deaths) : 0,
-              Recovered: fs.total_recovered ? replaceStringToNumber(fs.total_recovered) : 0,
+              Recovered: fs.total_recovered !== 'N/A' ? replaceStringToNumber(fs.total_recovered) : 0,
             }));
+
+            const casesByParticularCountryNewData = filteredStats.map((fs) => ({
+              name: this.setTranslateDate(moment(fs.record_date)),
+              Confirmed: fs.new_cases ? replaceStringToNumber(fs.new_cases) : 0,
+              Deaths: fs.new_deaths ? replaceStringToNumber(fs.new_deaths) : 0,
+              Critical: fs.serious_critical ? replaceStringToNumber(fs.serious_critical) : 0,
+            }));
+
             this.setState({
-              casesByParticularCountry: dataChart,
+              casesByParticularCountry: casesByParticularCountryData,
+              casesByParticularCountryNew: casesByParticularCountryNewData,
               countrySelected: country.label,
               flag: countriesTranslated.find((ct) => ct.originalName === country.value).tlc.toLowerCase(),
             });
@@ -163,7 +176,13 @@ class Graphic extends Component {
   };
 
   render() {
-    const { casesByParticularCountry, countrySelected, loadingCasesByParticularCountry, flag } = this.state;
+    const {
+      casesByParticularCountry,
+      casesByParticularCountryNew,
+      countrySelected,
+      loadingCasesByParticularCountry,
+      flag,
+    } = this.state;
 
     const customStyles = {
       container: (base) => ({
@@ -219,6 +238,10 @@ class Graphic extends Component {
                   <div style={{ display: countrySelected ? 'block' : 'none' }}>
                     <Flag code={flag} height='40' style={{ border: '1px solid black' }} />
                   </div>
+                  <br />
+                  <h6>
+                    <b>{this.props.t('cumulative', { n: 1 })}</b> {this.props.t('cumulative', { n: 2 })}
+                  </h6>
                   <ResponsiveContainer height={350}>
                     <AreaChart data={casesByParticularCountry} margin={{ top: 10, right: 10, left: 5, bottom: 0 }}>
                       <defs>
@@ -239,13 +262,11 @@ class Graphic extends Component {
                           <stop offset='95%' stopColor='#228b22' stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <XAxis dataKey='name'>
-                        <Label value={this.props.t('date')} offset={0} position='insideBottom' />
-                      </XAxis>
+                      <XAxis dataKey='name' />
                       <YAxis label={{ value: this.props.t('peoples'), angle: -90, position: 'insideLeft' }} />
                       <CartesianGrid strokeDasharray='3 3' />
                       <Tooltip />
-                      <Legend align={'right'} />
+                      <Legend iconType='square' />
                       <Area
                         type='monotone'
                         dataKey='Confirmed'
@@ -281,6 +302,11 @@ class Graphic extends Component {
                       />
                     </AreaChart>
                   </ResponsiveContainer>
+                  <hr />
+                  <h6>
+                    <b>{this.props.t('daily', { n: 1 })}</b> {this.props.t('daily', { n: 2 })}
+                  </h6>
+                  <GraphicNew gNew={casesByParticularCountryNew} t={this.props.t} />
                 </div>
               </div>
             </Card.Body>

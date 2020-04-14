@@ -127,11 +127,11 @@ class Corona extends Component {
               deaths: replaceStringToNumber(cbc.deaths),
               new_deaths: replaceStringToNumber(cbc.new_deaths),
               active_cases: replaceStringToNumber(cbc.active_cases),
-              total_recovered: replaceStringToNumber(cbc.total_recovered),
+              total_recovered: cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 0,
               serious_critical: replaceStringToNumber(cbc.serious_critical),
               tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
-              tablePercentRecovered: calcPercent(cbc.total_recovered, cbc.cases),
+              tablePercentRecovered: cbc.total_recovered !== 'N/A' ? calcPercent(cbc.total_recovered, cbc.cases) : 0,
             };
           });
 
