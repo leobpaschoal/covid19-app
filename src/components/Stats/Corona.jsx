@@ -176,8 +176,11 @@ class Corona extends Component {
       .then((response) => {
         const res = response.data;
         if (res.status === 'ok') {
+          console.log(res);
           this.setState({
-            news: res.articles.filter((art) => art.source.name !== 'Correiobraziliense.com.br'),
+            news: res.articles.filter(
+              (art) => art.source.name !== 'Correiobraziliense.com.br' || art.source.name !== 'Em.com.br'
+            ),
           });
         } else {
           this.handleError(this.props.t('messageErrorNews'));

@@ -239,9 +239,7 @@ class Graphic extends Component {
                     <Flag code={flag} height='40' style={{ border: '1px solid black' }} />
                   </div>
                   <br />
-                  <h6>
-                    <b>{this.props.t('cumulative', { n: 1 })}</b> {this.props.t('cumulative', { n: 2 })}
-                  </h6>
+                  <h6>{this.props.t('cumulative')}</h6>
                   <ResponsiveContainer height={350}>
                     <AreaChart data={casesByParticularCountry} margin={{ top: 10, right: 10, left: 5, bottom: 0 }}>
                       <defs>
@@ -303,9 +301,7 @@ class Graphic extends Component {
                     </AreaChart>
                   </ResponsiveContainer>
                   <hr />
-                  <h6>
-                    <b>{this.props.t('daily', { n: 1 })}</b> {this.props.t('daily', { n: 2 })}
-                  </h6>
+                  <h6>{this.props.t('daily')}</h6>
                   <GraphicNew gNew={casesByParticularCountryNew} t={this.props.t} />
                 </div>
               </div>

@@ -74,8 +74,8 @@ export const translationEn = {
     africa: 'Africa',
     oceania: 'Oceania',
     peoples: 'Number of people',
-    cumulative: ['CIDR:', 'Cumulative graphic'],
-    daily: ['CDC:', 'Daily graphic'],
+    cumulative: 'Cumulative graphic',
+    daily: 'Daily graphic',
   },
   News: {
     publishedAt: ['Published at [{{data}}] by {{author}}', 'Published at [{{data}}]'],
@@ -190,8 +190,8 @@ export const translationPtBr = {
     africa: 'África',
     oceania: 'Oceânia',
     peoples: 'Número de pessoas',
-    cumulative: ['CIMR:', 'Gráfico cumulativo'],
-    daily: ['CMC:', 'Gráfico diário'],
+    cumulative: 'Gráfico cumulativo',
+    daily: 'Gráfico diário',
   },
   News: {
     publishedAt: ['Publicado em [{{data}}] por {{author}}', 'Publicado em [{{data}}]'],
@@ -304,8 +304,8 @@ export const translationEs = {
     africa: 'África',
     oceania: 'Oceanía',
     peoples: 'Cantidad de personas',
-    cumulative: ['CIMR:', 'Gráfico acumulativo'],
-    daily: ['CMC:', 'Gráfico diario'],
+    cumulative: 'Gráfico acumulativo',
+    daily: 'Gráfico diario',
   },
   News: {
     publishedAt: ['Publicado en [{{data}}] por {{author}}', 'publicado en [{{data}}]'],
