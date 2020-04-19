@@ -38,6 +38,7 @@ class Corona extends Component {
     loadingGlobalStats: true,
     loadingAllCases: true,
     loadingNews: true,
+    showInfoTableModal: false,
     manageTimeout: null,
     refreshTime: 60000 * 10,
     refreshIsChecked: true,
@@ -80,7 +81,7 @@ class Corona extends Component {
           res.total_cases = replaceStringToNumber(res.total_cases);
           res.total_recovered = replaceStringToNumber(res.total_recovered);
           res.total_deaths = replaceStringToNumber(res.total_deaths);
-          res.total_infected = res.total_cases - (res.total_recovered + res.total_deaths);
+          res.total_infected = replaceStringToNumber(res.active_cases);
 
           res.percentInfected = calcPercent(res.total_infected, res.total_cases);
           res.percentDeaths = calcPercent(res.total_deaths, res.total_cases);
@@ -124,10 +125,14 @@ class Corona extends Component {
               country_name: chosenCountry !== '' ? chosenCountry : 'Unknown',
               cases: replaceStringToNumber(cbc.cases),
               new_cases: replaceStringToNumber(cbc.new_cases),
+              total_cases_per_1m_population: replaceStringToNumber(cbc.total_cases_per_1m_population),
               deaths: replaceStringToNumber(cbc.deaths),
               new_deaths: replaceStringToNumber(cbc.new_deaths),
+              deaths_per_1m_population: replaceStringToNumber(cbc.deaths_per_1m_population),
               active_cases: replaceStringToNumber(cbc.active_cases),
               total_recovered: cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 0,
+              total_tests: replaceStringToNumber(cbc.total_tests),
+              tests_per_1m_population: replaceStringToNumber(cbc.tests_per_1m_population),
               serious_critical: replaceStringToNumber(cbc.serious_critical),
               tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
@@ -176,10 +181,13 @@ class Corona extends Component {
       .then((response) => {
         const res = response.data;
         if (res.status === 'ok') {
-          console.log(res);
           this.setState({
             news: res.articles.filter(
-              (art) => art.source.name !== 'Correiobraziliense.com.br' || art.source.name !== 'Em.com.br'
+              (art) =>
+                art.source.name !== 'Correiobraziliense.com.br' &&
+                art.source.name !== 'Em.com.br' &&
+                art.source.name !== 'Uai.com.br' &&
+                art.source.name !== 'Blogdorodrigoferraz.com.br'
             ),
           });
         } else {
@@ -220,6 +228,10 @@ class Corona extends Component {
     }
   };
 
+  handleShowInfoTableModal = () => {
+    this.setState({ showInfoTableModal: !this.state.showInfoTableModal });
+  };
+
   handleError = (msg) => {
     this.setState({ showError: !this.state.showError, messageError: msg });
   };
@@ -245,6 +257,7 @@ class Corona extends Component {
       loadingGlobalStats,
       loadingAllCases,
       loadingNews,
+      showInfoTableModal,
       refreshIsChecked,
       refreshTime,
       keyTab,
@@ -291,6 +304,8 @@ class Corona extends Component {
                 data={filteredCountries}
                 loadingAllCases={loadingAllCases}
                 inputSearchCountry={inputSearchCountry}
+                handleShowInfoTableModal={this.handleShowInfoTableModal}
+                showInfoTableModal={showInfoTableModal}
                 filterByCountry={this.filterByCountry}
                 tCountry={this.props.tCountry}
               />

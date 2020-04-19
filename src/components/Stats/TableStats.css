@@ -10,6 +10,16 @@
   text-align: center;
 }
 
+.table-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-icon-toggle {
+  cursor: pointer;
+  font-size: 32px !important;
+}
+
 .table-card-adjust {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -94,13 +104,25 @@
 
 .critical-table-column {
   color: white;
-  background-color: #ca9b34 !important;
+  background-color: #8e9c3d !important;
   border-right: 1px solid white !important;
 }
 
 .critical-table-header {
   color: white;
-  background-color: #805f1a !important;
+  background-color: #565f25 !important;
+  border-bottom: 1px solid white;
+}
+
+.tests-table-column {
+  color: white;
+  background-color: #56838a !important;
+  border-right: 1px solid white !important;
+}
+
+.tests-table-header {
+  color: white;
+  background-color: #314a4e !important;
   border-bottom: 1px solid white;
 }
 
