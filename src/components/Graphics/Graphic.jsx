@@ -52,9 +52,21 @@ class Graphic extends Component {
               Critical: fs.serious_critical ? replaceStringToNumber(fs.serious_critical) : 0,
             }));
 
+            if (
+              moment(filteredStats[0].record_date).isAfter(moment(filteredStats[filteredStats.length - 1].record_date))
+            ) {
+              this.setState({
+                casesByParticularCountry: casesByParticularCountryData.reverse(),
+                casesByParticularCountryNew: casesByParticularCountryNewData.reverse(),
+              });
+            } else {
+              this.setState({
+                casesByParticularCountry: casesByParticularCountryData,
+                casesByParticularCountryNew: casesByParticularCountryNewData,
+              });
+            }
+
             this.setState({
-              casesByParticularCountry: casesByParticularCountryData,
-              casesByParticularCountryNew: casesByParticularCountryNewData,
               countrySelected: country.label,
               flag: countriesTranslated.find((ct) => ct.originalName === country.value).tlc.toLowerCase(),
             });
