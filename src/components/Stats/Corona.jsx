@@ -50,7 +50,7 @@ class Corona extends Component {
 
   componentDidMount = () => {
     this.getSyncAll(true, this.state.refreshTime);
-    this.getNews();
+    // this.getNews();
   };
 
   UNSAFE_componentWillReceiveProps = async (nextProps) => {
@@ -58,7 +58,7 @@ class Corona extends Component {
     await this.getGlobalStats();
     await this.getAllCases();
     this.setState({ loadingGlobalStats: false, loadingAllCases: false });
-    this.getNews(nextProps.tCountry);
+    // this.getNews(nextProps.tCountry);
   };
 
   getSyncAll = async (run, time) => {
@@ -77,11 +77,10 @@ class Corona extends Component {
           const res = response.data;
           res.new_cases = replaceStringToNumber(res.new_cases);
           res.new_deaths = replaceStringToNumber(res.new_deaths);
-
           res.total_cases = replaceStringToNumber(res.total_cases);
           res.total_recovered = replaceStringToNumber(res.total_recovered);
           res.total_deaths = replaceStringToNumber(res.total_deaths);
-          res.total_infected = replaceStringToNumber(res.active_cases);
+          res.total_infected = res.total_cases - (res.total_recovered + res.total_deaths);
 
           res.percentInfected = calcPercent(res.total_infected, res.total_cases);
           res.percentDeaths = calcPercent(res.total_deaths, res.total_cases);
@@ -105,7 +104,7 @@ class Corona extends Component {
           const dataCountriesStats = response.data.countries_stat.sort(
             (a, b) => replaceStringToNumber(b.cases) - replaceStringToNumber(a.cases)
           );
-
+          console.log(response);
           const dataCountriesStatsPrepared = dataCountriesStats.map((cbc) => {
             const objCountryFind = countriesTranslated.find((ct) => ct.originalName === cbc.country_name);
             let chosenCountry = cbc.country_name; // Default api
@@ -129,14 +128,14 @@ class Corona extends Component {
               deaths: replaceStringToNumber(cbc.deaths),
               new_deaths: replaceStringToNumber(cbc.new_deaths),
               deaths_per_1m_population: replaceStringToNumber(cbc.deaths_per_1m_population),
-              active_cases: replaceStringToNumber(cbc.active_cases),
-              total_recovered: cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 0,
-              total_tests: replaceStringToNumber(cbc.total_tests),
-              tests_per_1m_population: replaceStringToNumber(cbc.tests_per_1m_population),
-              serious_critical: replaceStringToNumber(cbc.serious_critical),
-              tablePercentInfecteds: calcPercent(cbc.active_cases, cbc.cases),
+              total_recovered: cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 'N/A',
+              infecteds: replaceStringToNumber(cbc.cases) - ((cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 0) + replaceStringToNumber(cbc.deaths)),
+              total_tests: replaceStringToNumber(cbc.tests_per_1m_population), 
+              tests_per_1m_population: replaceStringToNumber(cbc.total_tests), // inverter erro na api testes
+              serious_critical: cbc.serious_critical !== 'N/A' ? replaceStringToNumber(cbc.serious_critical) : 'N/A',
+              tablePercentInfecteds: cbc.total_recovered !== 'N/A' ? calcPercent(replaceStringToNumber(cbc.cases) - ((cbc.total_recovered !== 'N/A' ? replaceStringToNumber(cbc.total_recovered) : 0) + replaceStringToNumber(cbc.deaths)), cbc.cases) : '-',
               tablePercentDeaths: calcPercent(cbc.deaths, cbc.cases),
-              tablePercentRecovered: cbc.total_recovered !== 'N/A' ? calcPercent(cbc.total_recovered, cbc.cases) : 0,
+              tablePercentRecovered: cbc.total_recovered !== 'N/A' ? calcPercent(cbc.total_recovered, cbc.cases) : 'N/A',
             };
           });
 
@@ -162,43 +161,44 @@ class Corona extends Component {
       });
   };
 
-  getNews = async (nextCountryProps) => {
-    let country = 'us';
-    let type = 'coronavirus';
+  // getNews = async (nextCountryProps) => {
+  //   let country = 'us';
+  //   let type = 'coronavirus';
 
-    if (nextCountryProps) {
-      if (nextCountryProps === 'br') {
-        country = 'br';
-        type = 'coronavírus';
-      }
-    } else if (this.props.tCountry === 'br') {
-      country = 'br';
-      type = 'coronavírus';
-    }
+  //   if (nextCountryProps) {
+  //     if (nextCountryProps === 'br') {
+  //       country = 'br';
+  //       type = 'coronavírus';
+  //     }
+  //   } else if (this.props.tCountry === 'br') {
+  //     country = 'br';
+  //     type = 'coronavírus';
+  //   }
 
-    await news()
-      .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
-      .then((response) => {
-        const res = response.data;
-        if (res.status === 'ok') {
-          this.setState({
-            news: res.articles.filter(
-              (art) =>
-                art.source.name !== 'Correiobraziliense.com.br' &&
-                art.source.name !== 'Em.com.br' &&
-                art.source.name !== 'Uai.com.br' &&
-                art.source.name !== 'Blogdorodrigoferraz.com.br'
-            ),
-          });
-        } else {
-          this.handleError(this.props.t('messageErrorNews'));
-        }
-      })
-      .catch(() => {
-        this.handleError(this.props.t('messageErrorNews'));
-      });
-    this.setState({ loadingNews: false });
-  };
+  //   await news()
+  //     .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
+  //     .then((response) => {
+  //       console.log(response);
+  //       const res = response.data;
+  //       if (res.status === 'ok') {
+  //         this.setState({
+  //           news: res.articles.filter(
+  //             (art) =>
+  //               art.source.name !== 'Correiobraziliense.com.br' &&
+  //               art.source.name !== 'Em.com.br' &&
+  //               art.source.name !== 'Uai.com.br' &&
+  //               art.source.name !== 'Blogdorodrigoferraz.com.br'
+  //           ),
+  //         });
+  //       } else {
+  //         this.handleError(this.props.t('messageErrorNews'));
+  //       }
+  //     })
+  //     .catch(() => {
+  //       this.handleError(this.props.t('messageErrorNews'));
+  //     });
+  //   this.setState({ loadingNews: false });
+  // };
 
   handleManageTimeout = (run, time) => {
     clearTimeout(this.state.manageTimeout);
@@ -310,7 +310,7 @@ class Corona extends Component {
                 tCountry={this.props.tCountry}
               />
             </Tab>
-            <Tab
+            {/* <Tab
               disabled={loadingNews}
               eventKey='news'
               title={
@@ -321,7 +321,7 @@ class Corona extends Component {
               }
             >
               <News news={news} isDateFormatted={this.props.tCountry === 'br' ? true : false} />
-            </Tab>
+            </Tab> */}
             <Tab
               eventKey='tips'
               title={

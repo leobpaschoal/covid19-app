@@ -128,8 +128,8 @@ const TableStats = ({
                             {t('total')} <UnfoldMore style={{ fontSize: '18px' }} />
                           </span>
                         ),
-                        accessor: 'active_cases',
-                        Cell: (row) => <span>{makeNumberThousandSeparator(row.original.active_cases, tCountry)}</span>,
+                        accessor: 'infecteds',
+                        Cell: (row) => <span>{makeNumberThousandSeparator(row.original.infecteds, tCountry)}</span>,
                         className: 'infected-table-column',
                         headerClassName: 'infected-table-header',
                       },
@@ -137,12 +137,13 @@ const TableStats = ({
                         Header: t('percent'),
                         acessor: 'tablePercentInfecteds',
                         Cell: (row) => (
+                          row.original.tablePercentInfecteds !== '-' ?
                           <NumberFormat
                             decimalScale={2}
                             displayType={'text'}
                             suffix={'%'}
                             value={row.original.tablePercentInfecteds}
-                          />
+                          /> : '-'
                         ),
                         className: 'infected-table-column',
                         headerClassName: 'infected-table-header',
@@ -218,7 +219,7 @@ const TableStats = ({
                         ),
                         accessor: 'total_recovered',
                         Cell: (row) => (
-                          <span>{makeNumberThousandSeparator(row.original.total_recovered, tCountry)}</span>
+                          <span>{row.original.total_recovered !== 'N/A' ? makeNumberThousandSeparator(row.original.total_recovered, tCountry) : 'N/A'}</span>
                         ),
                         className: 'recovered-table-column',
                         headerClassName: 'recovered-table-header',
@@ -227,12 +228,13 @@ const TableStats = ({
                         Header: t('percent'),
                         acessor: 'tablePercentRecovered',
                         Cell: (row) => (
+                          row.original.tablePercentRecovered !== 'N/A' ?
                           <NumberFormat
                             decimalScale={2}
                             displayType={'text'}
                             suffix={'%'}
                             value={row.original.tablePercentRecovered}
-                          />
+                          /> : 'N/A'
                         ),
                         className: 'recovered-table-column',
                         headerClassName: 'recovered-table-header',
@@ -252,7 +254,7 @@ const TableStats = ({
                         ),
                         accessor: 'serious_critical',
                         Cell: (row) => (
-                          <span>{makeNumberThousandSeparator(row.original.serious_critical, tCountry)}</span>
+                         <span>{row.original.serious_critical !== 'N/A' ? makeNumberThousandSeparator(row.original.serious_critical, tCountry) : 'N/A'}</span>
                         ),
                         className: 'critical-table-column',
                         headerClassName: 'critical-table-header',

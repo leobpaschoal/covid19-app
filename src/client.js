@@ -14,6 +14,6 @@ export const monitor = () => {
 export const news = () => {
   const api = 'https://newsapi.org/v2';
   return axios.create({
-    baseURL: api,
+    baseURL: api
   });
 };
