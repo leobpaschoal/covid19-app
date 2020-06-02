@@ -50,7 +50,7 @@ class Corona extends Component {
 
   componentDidMount = () => {
     this.getSyncAll(true, this.state.refreshTime);
-    // this.getNews();
+    this.getNews();
   };
 
   UNSAFE_componentWillReceiveProps = async (nextProps) => {
@@ -58,7 +58,7 @@ class Corona extends Component {
     await this.getGlobalStats();
     await this.getAllCases();
     this.setState({ loadingGlobalStats: false, loadingAllCases: false });
-    // this.getNews(nextProps.tCountry);
+    this.getNews(nextProps.tCountry);
   };
 
   getSyncAll = async (run, time) => {
@@ -104,7 +104,6 @@ class Corona extends Component {
           const dataCountriesStats = response.data.countries_stat.sort(
             (a, b) => replaceStringToNumber(b.cases) - replaceStringToNumber(a.cases)
           );
-          console.log(response);
           const dataCountriesStatsPrepared = dataCountriesStats.map((cbc) => {
             const objCountryFind = countriesTranslated.find((ct) => ct.originalName === cbc.country_name);
             let chosenCountry = cbc.country_name; // Default api
@@ -161,44 +160,43 @@ class Corona extends Component {
       });
   };
 
-  // getNews = async (nextCountryProps) => {
-  //   let country = 'us';
-  //   let type = 'coronavirus';
+  getNews = async (nextCountryProps) => {
+    let country = 'us';
+    let type = 'coronavirus';
 
-  //   if (nextCountryProps) {
-  //     if (nextCountryProps === 'br') {
-  //       country = 'br';
-  //       type = 'coronavírus';
-  //     }
-  //   } else if (this.props.tCountry === 'br') {
-  //     country = 'br';
-  //     type = 'coronavírus';
-  //   }
+    if (nextCountryProps) {
+      if (nextCountryProps === 'br') {
+        country = 'br';
+        type = 'coronavírus';
+      }
+    } else if (this.props.tCountry === 'br') {
+      country = 'br';
+      type = 'coronavírus';
+    }
 
-  //   await news()
-  //     .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
-  //     .then((response) => {
-  //       console.log(response);
-  //       const res = response.data;
-  //       if (res.status === 'ok') {
-  //         this.setState({
-  //           news: res.articles.filter(
-  //             (art) =>
-  //               art.source.name !== 'Correiobraziliense.com.br' &&
-  //               art.source.name !== 'Em.com.br' &&
-  //               art.source.name !== 'Uai.com.br' &&
-  //               art.source.name !== 'Blogdorodrigoferraz.com.br'
-  //           ),
-  //         });
-  //       } else {
-  //         this.handleError(this.props.t('messageErrorNews'));
-  //       }
-  //     })
-  //     .catch(() => {
-  //       this.handleError(this.props.t('messageErrorNews'));
-  //     });
-  //   this.setState({ loadingNews: false });
-  // };
+    await news()
+      .get(`/top-headlines?q=${type}&country=${country}&category=health&apiKey=a126f00f72124e758e38dbab92d31aa3`)
+      .then((response) => {
+        const res = response.data;
+        if (res.status === 'ok') {
+          this.setState({
+            news: res.articles.filter(
+              (art) =>
+                art.source.name !== 'Correiobraziliense.com.br' &&
+                art.source.name !== 'Em.com.br' &&
+                art.source.name !== 'Uai.com.br' &&
+                art.source.name !== 'Blogdorodrigoferraz.com.br'
+            ),
+          });
+        } else {
+          this.handleError(this.props.t('messageErrorNews'));
+        }
+      })
+      .catch(() => {
+        this.handleError(this.props.t('messageErrorNews'));
+      });
+    this.setState({ loadingNews: false });
+  };
 
   handleManageTimeout = (run, time) => {
     clearTimeout(this.state.manageTimeout);
@@ -310,7 +308,7 @@ class Corona extends Component {
                 tCountry={this.props.tCountry}
               />
             </Tab>
-            {/* <Tab
+            <Tab
               disabled={loadingNews}
               eventKey='news'
               title={
@@ -321,7 +319,7 @@ class Corona extends Component {
               }
             >
               <News news={news} isDateFormatted={this.props.tCountry === 'br' ? true : false} />
-            </Tab> */}
+            </Tab>
             <Tab
               eventKey='tips'
               title={
